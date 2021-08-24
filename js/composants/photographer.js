@@ -20,9 +20,15 @@ class Photographer {
 
     /**
      * photographer country
-     * @type {string}
+     * @type {String}
      */
     country;
+
+    /**
+     * a media desciption
+     * @type {String}
+     */
+    description;
 
     /**
      * photographer tags
@@ -32,7 +38,7 @@ class Photographer {
 
     /**
      * photographer tagline
-     * @type {string}
+     * @type {String}
      */
     tagline;
 
@@ -78,8 +84,8 @@ class Photographer {
     get html(){
       return `
         <article>
-            <a href='#'>
-                <img src='../images/photographers_id_photos/${this.portrait}'>
+            <a href='?photographer/${this.id}'>
+                <img class='portrait' src='../images/photographers_id_photos/${this.portrait}' alt="${this.description}">
                 <h2>${this.name}</h2>
             </a>
             <p class='location'>${this.city}, ${this.country}</p>
@@ -87,11 +93,7 @@ class Photographer {
             <p class='price'>${this.price}</p>
             <p class='tags'>${this.tags}</p>
         </article>`
-
-        // <article>
-        //   <img src="${this.img}">
-        //   <h2>${this.titre}</h2>
-        // </article>
-      
     }
+
+
   }

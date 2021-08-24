@@ -1,0 +1,45 @@
+header {
+    width: 70vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.logo {
+    width: 12rem;
+    height: 3rem;
+    margin: 40px 20px 20px 20px;
+}
+
+nav {
+
+}
+
+nav div {
+    display: flex;
+    justify-content: center;
+}
+
+nav div a {
+    margin-bottom: 20px;
+    @include secondary-dark-theme;
+    background-color: #DB8876;
+    color: #000;
+    border: none;
+    border-radius: 3px;
+    padding: 0 8px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+nav a {
+    margin: 5px;
+    padding: 2px;
+    font-size: .6rem;
+    line-height: 200%;
+    border: 0.5px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 11px;
+    @include secondary-light-color-theme;
+}

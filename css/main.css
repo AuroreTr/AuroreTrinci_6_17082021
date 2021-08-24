@@ -1,0 +1,92 @@
+*, ::before, ::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: .8rem;
+  font-weight: 500;
+  margin: 0 auto;
+}
+
+header {
+  width: 70vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.logo {
+  width: 12rem;
+  height: 3rem;
+  margin: 40px 20px 20px 20px;
+}
+
+nav div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+nav div a {
+  margin-bottom: 20px;
+  background-color: #DB8876;
+  color: #000;
+  background-color: #DB8876;
+  color: #000;
+  border: none;
+  border-radius: 3px;
+  padding: 0 8px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+nav a {
+  margin: 5px;
+  padding: 2px;
+  font-size: .6rem;
+  line-height: 200%;
+  border: 0.5px solid #C4C4C4;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 11px;
+  background-color: #fff;
+  color: #901C1C;
+}
+
+.portrait {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.button {
+  width: 170px;
+  height: 70px;
+  background-color: #901C1C;
+  color: #fff;
+  font-weight: 700;
+  text-align: center;
+}
+/*# sourceMappingURL=main.css.map */

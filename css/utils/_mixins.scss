@@ -1,0 +1,40 @@
+@mixin title-font {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+@mixin text-font {
+    font-family: 'DM Sans', sans-serif;
+    font-size: .8rem;
+    font-weight: 500;
+}
+
+
+// primary colors
+@mixin primary-dark-theme {
+    background-color: $primary-color;
+    color: #fff;
+}
+
+@mixin primary-light-theme {
+    background-color: #fff;
+    color: $secondary-color;
+}
+
+
+// secondary colors
+@mixin secondary-dark-theme {
+    background-color: $tertiary-color;
+    color: #000;
+}
+
+@mixin secondary-light-theme {
+    background-color: #FAFAFA;
+    color: #525252;
+}
+
+@mixin secondary-light-color-theme {
+    background-color: #fff;
+    color: $primary-color;
+}

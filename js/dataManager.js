@@ -3,6 +3,11 @@ class DataManager{
     this.src = src;
   }
 
+  /**
+   * permet de récupérer toutes les donées du projet 
+   *
+   * @return  {Object}  [return description]
+   */
   async getAllData(){
     try{
       let data = await fetch("./js/"+this.src);
