@@ -44,13 +44,13 @@ class Photographer {
 
     /**
      * service price of photographer
-     * @type {number}
+     * @type {Number}
      */
     price;
 
     /**
      * photographer photo
-     * @type {string} 
+     * @type {String} 
      */ 
     portrait;
   
@@ -63,25 +63,29 @@ class Photographer {
      * @param   {number}  data.id  [data description]
      * @param   {String}  data.city  [data description]
      * @param   {String}  data.country  [data description]
-     * @param   {String}  data.tags  [data description]
+     * @param   {Array}   data.tags  [data description]
      * @param   {String}  data.tagline  [data description]
      * @param   {number}  data.price  [data description]
      * @param   {string}  data.portrait  [data description]
      * 
      * @constructor
      */
-    constructor(data){
+    constructor(data, domTarget, view){
+      this.DOM = document.createElement("article");
+      domTarget.appendChild(this.DOM);
       for (const [key, value] of Object.entries(data)) {
         this[key] = value;
       }
+      this.DOM.innerHTML = view === "resume" ? this.resume() : this.fullView();
     }
+
   
     /**
      * photographer html code
      *
      * @return  {String}  [return description]
      */
-    get html(){
+    resume(){
       return `
         <article>
             <a href='?photographer/${this.id}'>
@@ -93,6 +97,12 @@ class Photographer {
             <p class='price'>${this.price}</p>
             <p class='tags'>${this.tags}</p>
         </article>`
+    }
+
+    fullView(){
+      `
+      <h1>full view ${this.name}</h1>
+      `
     }
 
 

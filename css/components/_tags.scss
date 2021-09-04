@@ -1,0 +1,10 @@
+.tags {
+    margin: 5px;
+    padding: 2px;
+    font-size: .6rem;
+    line-height: 200%;
+    border: 0.5px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 11px;
+    @include secondary-light-color-theme;
+}

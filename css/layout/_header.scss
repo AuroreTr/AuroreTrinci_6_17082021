@@ -1,5 +1,4 @@
 header {
-    width: 70vw;
     display: flex;
     justify-content: space-between;
 }
@@ -9,10 +8,6 @@ header {
     width: 12rem;
     height: 3rem;
     margin: 40px 20px 20px 20px;
-}
-
-nav {
-
 }
 
 nav div {
@@ -33,13 +28,3 @@ nav div a {
     font-weight: 700;
 }
 
-nav a {
-    margin: 5px;
-    padding: 2px;
-    font-size: .6rem;
-    line-height: 200%;
-    border: 0.5px solid #C4C4C4;
-    box-sizing: border-box;
-    border-radius: 11px;
-    @include secondary-light-color-theme;
-}
