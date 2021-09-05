@@ -71,7 +71,37 @@ class Photographer {
         this[key] = value;
       }
       this.DOM.innerHTML = view === "resume" ? this.resume() : this.fullView();
+      // console.log(this.getTags(domTarget));
+
+      // this.tagFunction = this.getTags();
+
     }
+
+    // getTags() {
+    //   this.tags.forEach(element => {
+    //     console.log(element);
+    //   });
+    // }
+
+    // getTags(domTarget) {
+      // this.DOM = document.createElement("p");
+      // targetDom.appendChild(this.DOM);
+      // domTarget.appendChild(this.DOM);
+      // this.tags.forEach(element => {
+      //   this.tag = element;
+      //   this.DOM.innerHTML+=`<a class='tags' href='?'>${this.tag}</a>`;
+      //   console.log(this.tag);
+
+
+        // this.tags.forEach(tag => {
+        //   this.tag = tag;
+        //   let tagHtml = `<a class='tags' href='?'>${this.tag}</a>`;
+        //   console.log(this.tag);
+
+        // })
+    // }
+    
+
 
   
     /**
@@ -87,8 +117,7 @@ class Photographer {
         </a>
         <p class='location'>${this.city}, ${this.country}</p>
         <p class='tagline'>${this.tagline}</p>
-        <p class='price'>${this.price}</p>
-        <p class='tags'>${this.tags}</p>`
+        <p class='price'>${this.price}</p>`
     }
 
     /**
@@ -97,10 +126,20 @@ class Photographer {
      * @return  {[String]}  [return description]
      */
     fullView(){
+      this.tags.forEach(element => {
+        this.tag = element;
+        this.DOM.innerHTML+=`<a class='tags' href='?'>${this.tag}</a>`;
+      });
+
+
       return `
-      <h1>full view ${this.name}</h1>
-      `
+        <div>
+          <h1>${this.name}</h1>
+          <p>${this.country}</p>
+          <p>${this.tagline}</p>
+          <p>${this.tag}</p>
+        </div>
+        <button class="contact-me">Contactez-moi</button>
+        <img class='portrait' src='../images/photographers_id_photos/${this.portrait}' alt="${this.photographerImageDescription}">`
     }
-
-
   }

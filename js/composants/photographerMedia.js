@@ -1,4 +1,4 @@
-class PhotographerDetails {
+class PhotographerMedia {
 
     /**
      * photographer id

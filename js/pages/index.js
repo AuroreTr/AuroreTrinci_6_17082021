@@ -17,20 +17,6 @@ class Index{
       this.photographers = data.photographers;
       this.render();
     }
-
-    getTags() {
-      tagHtml = '<p>';
-      this.photographers.forEach(element => {
-        // console.log(element.tags);
-        this.tags = element.tags;
-        this.tags.forEach(tag => {
-          this.tag = tag;
-          tagHtml+=`<a class='tags' href='?'>${this.tag}</a>`;
-        })
-      })
-      console.log(tagHtml);
-    }
-
   
     render(){
       // new Header()

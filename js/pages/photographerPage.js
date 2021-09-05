@@ -50,6 +50,8 @@ class PhotographerPage{
         this.dataPhotographer = element;
         if (id === photographerId) {
           console.log(element);
+          let newPhotographerData = new PhotographerMedia(element, this.domTarget);
+          console.log(newPhotographerData);
         }
       });
           // console.log(infoPhotographer);
