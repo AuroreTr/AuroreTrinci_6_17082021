@@ -1,10 +1,10 @@
 class PhotographerPage{
 
-    // /**
-    //  * un tableau de cartes
-    //  * @type {Array}
-    //  */
-    // photographers;
+    /**
+     * un tableau de cartes
+     * @type {Array}
+     */
+    photographers;
 
     /**
      * un tableau de media
@@ -23,12 +23,12 @@ class PhotographerPage{
       const data = await dataManager.getAllData();
       // const data = await dataManager.getPhotographerData();
       // console.log(data);
-      this.dataPhotographer = data.photographers;
+      this.infoPhotographer = data.photographers;
       // console.log(this.dataPhotographer);
       this.mediaData = data.media;
       // console.log(this.mediaData);
       this.getPhotographerData(82);
-      this.render();
+      // this.render();
     }
 
     // render() {
@@ -36,18 +36,33 @@ class PhotographerPage{
     // }
 
     getPhotographerData(photographerId) {
+      const infoPhotographer = this.infoPhotographer;
+      infoPhotographer.forEach(element => {
+        let photographerIdentifiant = element.id;
+        if (photographerIdentifiant === photographerId) {
+          let newPhotographer = new Photographer(element, this.domTarget, "fullview");
+          console.log(newPhotographer);
+        }
+      });
+
       this.mediaData.forEach(element => {
         let id = element.photographerId;
+        this.dataPhotographer = element;
         if (id === photographerId) {
           console.log(element);
         }
-        });
+      });
+          // console.log(infoPhotographer);
+          // let newPhotographer = new Photographer(this.dataPhotographer, this.domTarget, "fullView");
+          // console.log(newPhotographer);
+
+        }
 
     }
   
-    render(){
-      let newPhotographer = new Photographer(this.dataPhotographer, this.domTarget, "fullView");
-      console.log(newPhotographer);
+    // render(){
+    //   let newPhotographer = new Photographer(this.dataPhotographer, this.domTarget, "fullView");
+    //   console.log(newPhotographer);
 
       // mediaData.forEach(element => {
       //   let id = element.photographerId;
@@ -60,5 +75,5 @@ class PhotographerPage{
       //   new PhotographerDetails(element);
       // });
       // console.log('ok');
-    }
-  }
+    // }
+  // }

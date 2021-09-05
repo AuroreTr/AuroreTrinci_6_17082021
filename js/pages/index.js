@@ -33,7 +33,7 @@ class Index{
 
   
     render(){
-      new Header()
+      // new Header()
       this.photographers.forEach(element => {
          new Photographer(element, this.DOM, "resume");
       });

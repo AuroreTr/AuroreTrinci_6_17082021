@@ -25,12 +25,6 @@ class Photographer {
     country;
 
     /**
-     * a media desciption
-     * @type {String}
-     */
-    description;
-
-    /**
      * photographer tags
      * @type {Array}
      */
@@ -81,26 +75,29 @@ class Photographer {
 
   
     /**
-     * photographer html code
+     * resume view of photographer infos
      *
      * @return  {String}  [return description]
      */
     resume(){
       return `
-        <article>
-            <a href='?photographer/${this.id}'>
-                <img class='portrait' src='../images/photographers_id_photos/${this.portrait}' alt="${this.description}">
-                <h2>${this.name}</h2>
-            </a>
-            <p class='location'>${this.city}, ${this.country}</p>
-            <p class='tagline'>${this.tagline}</p>
-            <p class='price'>${this.price}</p>
-            <p class='tags'>${this.tags}</p>
-        </article>`
+        <a href='?photographer/${this.id}'>
+            <img class='portrait' src='../images/photographers_id_photos/${this.portrait}' alt="${this.description}">
+            <h2>${this.name}</h2>
+        </a>
+        <p class='location'>${this.city}, ${this.country}</p>
+        <p class='tagline'>${this.tagline}</p>
+        <p class='price'>${this.price}</p>
+        <p class='tags'>${this.tags}</p>`
     }
 
+    /**
+     * full view of photographer infos
+     *
+     * @return  {[String]}  [return description]
+     */
     fullView(){
-      `
+      return `
       <h1>full view ${this.name}</h1>
       `
     }
