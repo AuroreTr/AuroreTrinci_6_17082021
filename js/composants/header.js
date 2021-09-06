@@ -1,14 +1,24 @@
 class Header{
-    constructor(data, title, domTarget){
-        this.DOM = document.createElement("header");
-        const tags = this.extractTags(data);
+    // constructor(dataTags, title, domTarget){
+    //     this.DOM = document.createElement("header");
+    //     const tags = this.extractTags(dataTags);
+    //     this.extractTags();
+
+    //     this.render();
+    // }
+
+    constructor() {
+      this.DOM = document.createElement('header');
+      this.render();
     }
 
-
-    extractTags(data){
-
+    render() {
+      // this.extractTags();
+      return `
+      <img class='logo' src="images/logo.png" alt="logo FishEye">
+      `;
     }
-}
+
 
 
 /*
@@ -28,3 +38,5 @@ class Header{
           <h2 class='title-index'>Nos photographes</h2>
         </header>
  */
+
+}

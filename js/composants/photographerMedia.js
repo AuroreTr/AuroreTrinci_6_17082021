@@ -54,10 +54,6 @@ class PhotographerMedia {
      */
     price;
 
-
-
-  
-  
     /**
      * [constructor description]
      *
@@ -82,38 +78,78 @@ class PhotographerMedia {
       for (const [key, value] of Object.entries(data)) {
         this[key] = value;
       }
+      this.photographerId = data.photographerId;
       this.render();
     }
   
     /**
      * update DOM content
      *
-     * @return  {void}  [return description]
+     * @return  {Void}  [return description]
      */
     render(){
       this.DOM.innerHTML = this.image ? this.templateImage() : this.templateVideo();
+      // new Header();
+
     }
 
+    getSource() {
+      // console.log(this.photographerId);
+      switch (this.photographerId) {
+        case 82:
+          this.source = '../images/Tracy/';
+          break;
+        case 195:
+          this.source = '../images/Marcel/';
+          break;
+        case 243:
+          this.source = '../images/Mimi/';
+          break;
+        case 527:
+          this.source = '../images/Nabeel/';
+          break;
+        case 925:
+          this.source = '../images/Rhode/';
+          break;
+        case 930:
+          this.source = '../images/Ellie_Rose/';
+          break;
+                              
+        default:
+          const err = 'Impossible de trouver la source du media';
+          console.log(err);
+          break;
+      }
+    }
+
+    /**
+     * view template of an image
+     *
+     * @return  {[String]}  [return html code]
+     */
     templateImage(){
+      this.getSource();
       return  `
-      <img class='media' src='../images/Mimi/${this.image}' alt='${this.description}'>
+      <img class='media' src='${this.source}${this.image}' alt='${this.description}'>
       <p>${this.title}</p>
       <p>${this.likes}</p>`;
     }
 
+    /**
+     * view template of a video
+     *
+     * @return  {[String]}  [return html code]
+     */
     templateVideo(){
-      return 
-
-        // <article>
-        //     <a href='?photographer/${this.id}'>
-        //         <img class='portrait' src='../images/photographers_id_photos/${this.portrait}' alt="${this.description}">
-        //         <h2>${this.name}</h2>
-        //     </a>
-        //     <p class='location'>${this.city}, ${this.country}</p>
-        //     <p class='tagline'>${this.tagline}</p>
-        //     <p class='price'>${this.price}</p>
-        //     <p class='tags'>${this.tags}</p>
-        // </article>`;
+      this.getSource();
+      return `
+      <video controls class='media'>
+        <source src='${this.source}${this.video}' type='video/mp4'>
+        <p>${this.description}</p>
+        <p>Votre navigateur ne prend pas en charge les videos</p>
+      </video>
+      <p>${this.title}</p>
+      <p>${this.likes}</p>`;
     }
 
 

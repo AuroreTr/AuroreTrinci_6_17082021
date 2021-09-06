@@ -41,7 +41,7 @@ class PhotographerPage{
         let photographerIdentifiant = element.id;
         if (photographerIdentifiant === photographerId) {
           let newPhotographer = new Photographer(element, this.domTarget, "fullview");
-          console.log(newPhotographer);
+          // console.log(newPhotographer);
         }
       });
 
@@ -49,9 +49,9 @@ class PhotographerPage{
         let id = element.photographerId;
         this.dataPhotographer = element;
         if (id === photographerId) {
-          console.log(element);
+          // console.log(element);
           let newPhotographerData = new PhotographerMedia(element, this.domTarget);
-          console.log(newPhotographerData);
+          // console.log(newPhotographerData);
         }
       });
           // console.log(infoPhotographer);

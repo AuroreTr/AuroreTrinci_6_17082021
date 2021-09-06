@@ -103,4 +103,11 @@ main {
   background-color: #fff;
   color: #901C1C;
 }
+
+.media {
+  width: 250px;
+  height: 250px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 /*# sourceMappingURL=main.css.map */

@@ -77,6 +77,47 @@ class Photographer {
 
     }
 
+    extractTags(data){
+      // const data = await dataManager.getAllData();
+      // this.infoPhotographer = data;
+      // console.log(this.infoPhotographer);
+      // const infoPhotographer = this.infoPhotographer;
+      // this.allTags = [];
+
+      // infoPhotographer.forEach(element => {
+      //   // this.photographerTags = element.tags;
+      //   // console.log(photographerTags);
+      // this.tags = element.tags;
+      // console.log(this.tags);
+      // console.log(this.tags);
+      for (const tagName of data) {
+        this.newTag = new Tag(tagName, this.DOM);
+        console.log(this.newTag);
+        // return `<a href='?'>${this.tag}</a>`;
+
+        // return `
+        //   <a href='?'>${name}</a>`;
+
+        
+      }
+      // this.tags.forEach(name => {
+      //   this.name = name;
+      //   console.log(this.name);
+
+      //   return `
+      //     <a href='?'>${this.name}</a>`
+      //   // this.allTags.push(name);
+  
+      // });
+      // })
+    //   console.log(this.allTags);
+    //   let arrayTags = new Set(this.allTags);
+    //   console.log(arrayTags);
+
+    //   arrayTags.forEach(element)
+    // }
+
+
     // getTags() {
     //   this.tags.forEach(element => {
     //     console.log(element);
@@ -99,7 +140,7 @@ class Photographer {
         //   console.log(this.tag);
 
         // })
-    // }
+    }
     
 
 
@@ -126,20 +167,19 @@ class Photographer {
      * @return  {[String]}  [return description]
      */
     fullView(){
-      this.tags.forEach(element => {
-        this.tag = element;
-        this.DOM.innerHTML+=`<a class='tags' href='?'>${this.tag}</a>`;
-      });
-
-
+      for (const tagName of this.tags) {
+        this.newTag = new Tag(tagName, this.DOM);
+        console.log(this.newTag);
+      }
+      // let tagName = this.extractTags(this.tags);
       return `
-        <div>
-          <h1>${this.name}</h1>
-          <p>${this.country}</p>
-          <p>${this.tagline}</p>
-          <p>${this.tag}</p>
-        </div>
-        <button class="contact-me">Contactez-moi</button>
-        <img class='portrait' src='../images/photographers_id_photos/${this.portrait}' alt="${this.photographerImageDescription}">`
+      <div>
+        <h1>${this.name}</h1>
+        <p>${this.country}</p>
+        <p>${this.tagline}</p>
+        <p>${this.newTag}</p>
+      </div>
+      <button class="contact-me">Contactez-moi</button>
+      <img class='portrait' src='../images/photographers_id_photos/${this.portrait}' alt="${this.photographerImageDescription}">`;
     }
   }
