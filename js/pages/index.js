@@ -8,22 +8,40 @@ class Index{
   
     constructor(domTarget){
       this.DOM = domTarget;
-      this.DOM.innerHTML = "loading";
-      this.initPage();
-    }
-  
-    async initPage(){
-      const data = await dataManager.getAllData();
-      this.photographers = data.photographers;
+      this.filters = [];
+
+      /*
+      TODO : décommenter line 14 et le faire disparaitre à l'appel de initPage()
+      */
+     
+      // this.DOM.innerHTML = "loading";
       this.render();
     }
-  
-    render(){
-      // new Header()
+
+    createNewPhotographer() {
       this.photographers.forEach(element => {
-         new Photographer(element, this.DOM, "resume");
+        new Photographer(element, this.DOM, "resume");
+     });
+
+    }
+  
+    async render(){
+      this.DOM.innerText="";
+      this.photographers = await dataManager.getPhotographers(this.filters);
+      this.tags = dataManager.getPhotographersTags();
+      new Header(this.DOM, this.tags, this.tagClick.bind(this), 'Nos photographes');
+      const container = document.createElement('main');
+      this.DOM.appendChild(container);
+      this.photographers.forEach(element => {
+         new Photographer(element, container, "resume");
       });
-      this.DOM.innerHTML = html;
-      html+= `</main>`;
+      this.DOM.appendChild(container);
+    }
+
+    tagClick(tagName){
+      const index = this.filters.indexOf(tagName);
+      if (index >= 0) this.filters.splice(index, 1);
+      else this.filters.push(tagName);
+      this.render();
     }
   }

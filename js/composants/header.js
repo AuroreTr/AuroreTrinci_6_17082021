@@ -7,14 +7,17 @@ class Header{
     //     this.render();
     // }
 
-    constructor() {
+    constructor(domTarget, tags=null, tagAction=null, title=null) {
       this.DOM = document.createElement('header');
+      domTarget.appendChild(this.DOM);
       this.render();
+      if (tags !== null) new NavTags(tags, tagAction, this.DOM);
+      if (title !== null) new SimpleComponent('h1', title, this.DOM);
     }
 
     render() {
       // this.extractTags();
-      return `
+      this.DOM.innerHTML = `
       <img class='logo' src="images/logo.png" alt="logo FishEye">
       `;
     }

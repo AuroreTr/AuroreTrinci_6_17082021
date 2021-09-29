@@ -24,7 +24,7 @@ class PhotographerPage{
       // const data = await dataManager.getPhotographerData();
       // console.log(data);
       this.infoPhotographer = data.photographers;
-      // console.log(this.dataPhotographer);
+      // console.log(this.infoPhotographer);
       this.mediaData = data.media;
       // console.log(this.mediaData);
       this.getPhotographerData(82);

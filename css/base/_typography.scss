@@ -2,3 +2,9 @@ body {
     @include text-font;
     margin: 0 auto;
 }
+
+h2 {
+    color: $secondary-color;
+    font-size: 36px;
+    font-weight: 400;
+}

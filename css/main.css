@@ -17,8 +17,14 @@ ul {
 body {
   font-family: 'DM Sans', sans-serif;
   font-size: .8rem;
-  font-weight: 500;
+  font-weight: 400;
   margin: 0 auto;
+}
+
+h2 {
+  color: #D3573C;
+  font-size: 36px;
+  font-weight: 400;
 }
 
 header {
@@ -28,35 +34,29 @@ header {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .logo {
   width: 12rem;
-  height: 3rem;
-  margin: 40px 20px 20px 20px;
+  padding: 10px 0 0 20px;
 }
 
-nav div {
+nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
 }
 
-nav div a {
-  margin-bottom: 20px;
-  background-color: #DB8876;
-  color: #000;
-  background-color: #DB8876;
-  color: #000;
-  border: none;
-  border-radius: 3px;
-  padding: 0 8px;
-  text-align: center;
-  font-size: 1rem;
-  font-weight: 700;
+h1 {
+  padding-right: 30px;
 }
 
 .title-index {
@@ -69,12 +69,24 @@ main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
 
-.portrait {
+.resume-view {
+  width: 250px;
+  margin: 15px;
+  text-align: center;
+}
+
+.resume-view .portrait {
   width: 150px;
   height: 150px;
   border-radius: 50%;
@@ -82,11 +94,32 @@ main {
      object-fit: cover;
 }
 
-.button {
-  width: 170px;
-  height: 70px;
-  background-color: #901C1C;
-  color: #fff;
+.resume-view p {
+  padding: 2px;
+}
+
+.resume-view .localisation {
+  color: #901C1C;
+  font-size: 13px;
+}
+
+.resume-view .tagline {
+  font-size: 10px;
+}
+
+.resume-view .price {
+  font-size: 9px;
+  color: #757575;
+}
+
+button {
+  max-height: 27px;
+  margin: 3px;
+  padding: 3px 5px;
+  background-color: #fff;
+  color: #901C1C;
+  border: .5px solid #C4C4C4;
+  border-radius: 11px;
   font-weight: 700;
   text-align: center;
 }
@@ -94,7 +127,8 @@ main {
 .tags {
   margin: 5px;
   padding: 2px;
-  font-size: .6rem;
+  font-size: 12px;
+  font-weight: 500;
   line-height: 200%;
   border: 0.5px solid #C4C4C4;
   -webkit-box-sizing: border-box;

@@ -6,12 +6,37 @@
 
 main {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
-.portrait {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
+
+.resume-view {
+    width: 250px;
+    margin: 15px;
+    text-align: center;
+    .portrait {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+    p {
+        padding: 2px;
+    }
+    .localisation {
+        color: $primary-color;
+        font-size: 13px;   
+    }
+    .tagline {
+        font-size: 10px;
+    }
+    .price {
+        font-size: 9px;
+        color: #757575;
+    }
 }
+
+
+

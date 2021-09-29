@@ -1,9 +1,12 @@
 class Tag {
-    constructor(name, domTarget){
+    constructor(name, callback, domTarget){
         this.checked = false;
         this.name = name;
         this.DOM = document.createElement("button");
-        // this.DOM.onclick = click.bind(this);
+        if (callback !== null){
+            this.DOM.onclick = this.click.bind(this);
+            this.callback = callback;
+        }
         this.render();
         domTarget.appendChild(this.DOM);
     }
@@ -13,10 +16,11 @@ class Tag {
 
     render(){
         this.DOM.className = this.checked ? "active" : "inactive";
-        this.DOM.innerText = this.name;
+        this.DOM.innerText = '#'+this.name;
     }
 
     click(){
-
+        this.DOM.classList.toggle("active");
+        this.callback(this.name);
     }
 }

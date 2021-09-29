@@ -1,30 +1,35 @@
 header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 
 .logo {
     width: 12rem;
-    height: 3rem;
-    margin: 40px 20px 20px 20px;
+    padding: 10px 0 0 20px;
 }
 
-nav div {
+nav {
     display: flex;
+    flex-wrap: nowrap;
     justify-content: center;
 }
 
-nav div a {
-    margin-bottom: 20px;
-    @include secondary-dark-theme;
-    background-color: #DB8876;
-    color: #000;
-    border: none;
-    border-radius: 3px;
-    padding: 0 8px;
-    text-align: center;
-    font-size: 1rem;
-    font-weight: 700;
+h1 {
+    padding-right: 30px;
 }
+
+// nav div a {
+//     margin-bottom: 20px;
+//     @include secondary-dark-theme;
+//     background-color: #DB8876;
+//     color: #000;
+//     border: none;
+//     border-radius: 3px;
+//     padding: 0 8px;
+//     text-align: center;
+//     font-size: 1rem;
+//     font-weight: 700;
+// }
 

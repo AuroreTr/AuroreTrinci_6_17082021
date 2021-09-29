@@ -37,7 +37,7 @@ class Photographer {
     tagline;
 
     /**
-     * service price of photographer
+     * service rate of photographer
      * @type {Number}
      */
     price;
@@ -66,18 +66,20 @@ class Photographer {
      */
     constructor(data, domTarget, view){
       this.DOM = document.createElement("article");
+      this.DOM.className = 'resume-view';
       domTarget.appendChild(this.DOM);
       for (const [key, value] of Object.entries(data)) {
         this[key] = value;
       }
-      this.DOM.innerHTML = view === "resume" ? this.resume() : this.fullView();
+      view === "resume" ? this.resume() : this.fullView();
+      // this.extractTags(this.tags);
       // console.log(this.getTags(domTarget));
 
       // this.tagFunction = this.getTags();
 
     }
 
-    extractTags(data){
+    insertTags(domTarget){
       // const data = await dataManager.getAllData();
       // this.infoPhotographer = data;
       // console.log(this.infoPhotographer);
@@ -90,9 +92,9 @@ class Photographer {
       // this.tags = element.tags;
       // console.log(this.tags);
       // console.log(this.tags);
-      for (const tagName of data) {
-        this.newTag = new Tag(tagName, this.DOM);
-        console.log(this.newTag);
+      for (const tagName of this.tags) {
+        new Tag(tagName, null, domTarget);
+        // console.log(this.newTag);
         // return `<a href='?'>${this.tag}</a>`;
 
         // return `
@@ -148,38 +150,38 @@ class Photographer {
     /**
      * resume view of photographer infos
      *
-     * @return  {String}  [return description]
+     * @return  {Void}  [return description]
      */
     resume(){
-      return `
-        <a href='?photographer/${this.id}'>
-            <img class='portrait' src='../images/photographers_id_photos/${this.portrait}' alt="${this.description}">
-            <h2>${this.name}</h2>
-        </a>
-        <p class='location'>${this.city}, ${this.country}</p>
-        <p class='tagline'>${this.tagline}</p>
-        <p class='price'>${this.price}</p>`
+      const link = document.createElement('a');
+      const image = link.appendChild(document.createElement('img'));
+      image.className = 'portrait';
+      image.setAttribute('src', `../images/photographers_id_photos/${this.portrait}`);
+      image.setAttribute('alt', `Photo de ${this.name}`);
+      new SimpleComponent('h2', this.name, link);
+      this.DOM.appendChild(link);
+      new SimpleComponent('p', this.city+', '+this.country, this.DOM, 'localisation-index', 'localisation');
+      new SimpleComponent('p', this.tagline, this.DOM, 'tagline-index', 'tagline');
+      new SimpleComponent('p', this.price+'€/jour', this.DOM, 'price');
+      const container = document.createElement('p');
+      this.DOM.appendChild(container);
+      this.insertTags(container);
     }
 
     /**
      * full view of photographer infos
      *
-     * @return  {[String]}  [return description]
+     * @return  {Void}  [return description]
      */
     fullView(){
-      for (const tagName of this.tags) {
-        this.newTag = new Tag(tagName, this.DOM);
-        console.log(this.newTag);
-      }
-      // let tagName = this.extractTags(this.tags);
-      return `
-      <div>
-        <h1>${this.name}</h1>
-        <p>${this.country}</p>
-        <p>${this.tagline}</p>
-        <p>${this.newTag}</p>
-      </div>
-      <button class="contact-me">Contactez-moi</button>
-      <img class='portrait' src='../images/photographers_id_photos/${this.portrait}' alt="${this.photographerImageDescription}">`;
+      const container = document.createElement("div");
+      new SimpleComponent("h1", this.name,container);
+      new SimpleComponent("p", this.country,container);
+      new SimpleComponent("p", this.tagline,container);
+      new NavTags(this.tags, container);
+      this.DOM.appendChild(container);
+      // new contactButton();
+      // new ImagePhotographer();
+      
     }
   }
