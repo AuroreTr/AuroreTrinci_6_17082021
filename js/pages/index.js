@@ -1,4 +1,7 @@
-class Index{
+import Photographer from "../composants/photographer.js";
+
+import {getPhotographers, getPhotographersTags} from "../dataManager.js";
+export class Index{
 
     /**
      * un tableau de cartes
@@ -27,8 +30,8 @@ class Index{
   
     async render(){
       this.DOM.innerText="";
-      this.photographers = await dataManager.getPhotographers(this.filters);
-      this.tags = dataManager.getPhotographersTags();
+      this.photographers = await getPhotographers(this.filters);
+      this.tags = getPhotographersTags();
       new Header(this.DOM, this.tags, this.tagClick.bind(this), 'Nos photographes');
       const container = document.createElement('main');
       this.DOM.appendChild(container);

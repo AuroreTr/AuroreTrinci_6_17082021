@@ -1,4 +1,4 @@
-class Tag {
+export class Tag {
     constructor(name, callback, domTarget){
         this.checked = false;
         this.name = name;

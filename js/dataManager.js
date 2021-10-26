@@ -1,73 +1,108 @@
-class DataManager {
-  /**
-   * les données brutes récupérées
-   * @type {Object}
-   */
-  data;
+/**
+ * les données brutes récupérées
+ * @type {Object}
+ */
+let data;
 
-  /**
-   * la source des données
-   * @type {String}
-   */
-  src;
+/**
+ * la source des données
+ * @type {String}
+ */
+let src;
 
-  constructor(src) {
-    this.src = src;
-  }
+function initDataManagerSource(source) {
+  src = source;
+}
 
-  /**
-   * permet de récupérer toutes les donées du projet
-   *
-   * @return  {Object}  [return description]
-   */
-  async getAllData() {
-    try {
-      const data = await fetch("./js/" + this.src);
-      this.data = await data.json();
-      // console.log(this.data);
-      return this.data;
-    } catch (err) {
-      alert("echec");
-      console.error(err);
-    }
-  }
-
-  /**
-   * permet d'avoir tous les tags uniques de chaque photographes
-   *
-   * @return  {Array}  un tableau de tag
-   */
-  getPhotographersTags() {
-    let allTags = [];
-
-    this.data.photographers.forEach((photographer) => {
-      allTags = allTags.concat(photographer.tags);
-    });
-     
-    return [...new Set(allTags)];
-    
-  }
-
-  /**
-   * [getPhotographers description]
-   *
-   * @param   {Array}  filters  [filters description]
-   *
-   * @return  {Array}           [return description]
-   */
-  async getPhotographers(filters){
-    if(this.data === undefined) await this.getAllData();
-    // console.log(this.data);
-    // if (this.data.length === 0) await this.getAllData();
-    if (filters.length === 0) return this.data.photographers;
-    const list = [];
-    const filtersLength = filters.length;
-    this.data.photographers.forEach(photographer => {
-      for(let i=0; i<filtersLength; i++){
-        if (photographer.tags.indexOf(filters[i]) >=0 ) list.push(photographer);
-      }
-    });
-    return [...new Set(list)];
+/**
+ * permet de récupérer toutes les donées du projet
+ *
+ * @return  {Promise.<Object>}  [return description]
+ */
+async function getAllData() {
+  try {
+    const dataTmp = await fetch("./js/" + src);
+    data = await dataTmp.json();
+    // console.log(data);
+    return data;
+  } catch (err) {
+    alert("echec");
+    console.error(err);
   }
 }
 
+/**
+ * permet d'avoir tous les tags uniques de chaque photographes
+ *
+ * @return  {Array}  un tableau de tag
+ */
+function getPhotographersTags() {
+  let allTags = [];
+
+  data.photographers.forEach((photographer) => {
+    allTags = allTags.concat(photographer.tags);
+  });
+
+  return [...new Set(allTags)];
+}
+
+/**
+ * [getPhotographers description]
+ *
+ * @param   {Array}  filters  [filters description]
+ *
+ * @return  {Promise.<Array>}           [return description]
+ */
+async function getPhotographers(filters) {
+  if (data === undefined) await getAllData();
+  // console.log(data);
+  // if (data.length === 0) await getAllData();
+  if (filters.length === 0) return data.photographers;
+  const list = [];
+  const filtersLength = filters.length;
+  data.photographers.forEach((photographer) => {
+    for (let i = 0; i < filtersLength; i++) {
+      if (photographer.tags.indexOf(filters[i]) >= 0) list.push(photographer);
+    }
+  });
+  return [...new Set(list)];
+}
+
+async function getPhotographerData(photographerId) {
+  if (data === undefined) await getAllData();
+  data.photographers.forEach((photographer) => {
+    if (photographer.id === photographerId) return photographer;
+  });
+}
+
+function getPhotographerMedia(photographerId) {
+  const list = [];
+  data.media.forEach((media) => {
+    if (media.photographerId === photographerId) {
+      list.push(media);
+    }
+  });
+  return list;
+}
+
+/**
+ * [sortList description]
+ *
+ * @param   {Array}  list   [list description]
+ * @param   {String}  index  [index description]
+ *
+ * @return  {Array}         [return description]
+ */
+function sortList(list, index) {
+  return list;
+}
+
+export {
+  initDataManagerSource,
+  getAllData,
+  getPhotographersTags,
+  getPhotographers,
+  getPhotographerData,
+  getPhotographerMedia,
+  sortList,
+};

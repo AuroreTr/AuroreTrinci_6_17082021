@@ -1,81 +1,73 @@
-class PhotographerPage{
+import { getPhotographerData,
+  getPhotographerMedia,
+  sortList } from "../dataManager.js";
+
+import {Photographer} from "../composants/photographer.js";
+import {Sorting} from "../composants/sorting.js";
+import {PhotographerMedia} from "../composants/photographerMedia.js";
+import {Header} from "../composants/header.js";
+import {ContentForm} from "../composants/contentForm.js";
+import {Form} from "../composants/Form.js";
+export class PhotographerPage{
 
     /**
      * un tableau de cartes
-     * @type {Array}
+     * @type {Object}
      */
-    photographers;
+     infoPhotographer;
 
     /**
      * un tableau de media
      * @type {Array}
      */
-    media;
   
     constructor(domTarget){
       this.domTarget = domTarget;
-      // this.DOM = domTarget;
-      // this.DOM.innerHTML = "loading";
+      this.domTarget.innerText = "loading";
+      this.sortList = [
+        "popularité",
+        "date",
+        "titre"
+      ];
+      this.actualFilter = this.sortList[0];
       this.initPage();
     }
   
     async initPage(){
-      const data = await dataManager.getAllData();
-      // const data = await dataManager.getPhotographerData();
-      // console.log(data);
-      this.infoPhotographer = data.photographers;
-      // console.log(this.infoPhotographer);
-      this.mediaData = data.media;
-      // console.log(this.mediaData);
-      this.getPhotographerData(82);
-      // this.render();
+      this.infoPhotographer = await getPhotographerData(82);
+      this.mediaList = await getPhotographerMedia(82);
+      this.mediaList = sortList(this.mediaList, this.actualFilter);
+      this.render();
     }
 
-    // render() {
-      // this.DOM.innerHTML = obj;
-    // }
-
-    getPhotographerData(photographerId) {
-      const infoPhotographer = this.infoPhotographer;
-      infoPhotographer.forEach(element => {
-        let photographerIdentifiant = element.id;
-        if (photographerIdentifiant === photographerId) {
-          let newPhotographer = new Photographer(element, this.domTarget, "fullview");
-          // console.log(newPhotographer);
-        }
+    render() {
+      this.domTarget.innerText="";
+      new Header(this.domTarget);
+      new Photographer(this.infoPhotographer, this.domTarget, "fullView");
+      new Sorting(this.domTarget, this.sortList, this.sortClick.bind(this));
+      this.mediaList.forEach(element => {
+        new PhotographerMedia(element);
       });
+    }
 
-      this.mediaData.forEach(element => {
-        let id = element.photographerId;
-        this.dataPhotographer = element;
-        if (id === photographerId) {
-          // console.log(element);
-          let newPhotographerData = new PhotographerMedia(element, this.domTarget);
-          // console.log(newPhotographerData);
-        }
-      });
-          // console.log(infoPhotographer);
-          // let newPhotographer = new Photographer(this.dataPhotographer, this.domTarget, "fullView");
-          // console.log(newPhotographer);
-
-        }
+    sortClick(keyword){
 
     }
-  
-    // render(){
-    //   let newPhotographer = new Photographer(this.dataPhotographer, this.domTarget, "fullView");
-    //   console.log(newPhotographer);
 
-      // mediaData.forEach(element => {
-      //   let id = element.photographerId;
-      //   if (id === photographerId) {
-          
-      //   }
-      //   });
+    createContactForm() {
 
-      // this.media.forEach(element => {
-      //   new PhotographerDetails(element);
-      // });
-      // console.log('ok');
-    // }
-  // }
+      // const form = document.createElement('form');
+      // contentForm.appendChild(form);
+      const form = new Form(form);
+
+      const contentForm = document.createElement('div');
+      domTarget.appendChild(this.domTarget);
+      contentForm.className = 'bground';
+      new ContentForm(form.DOM, form.validText);
+      new Input(this.DOM, {type:"text","className":"lmklmkmlk", oninput:form.validText})
+
+      const formData = document.createElement('div');
+      form.appendChild(formData);
+      new FormData()
+    }
+  }

@@ -1,4 +1,4 @@
-class PhotographerMedia {
+export class PhotographerMedia {
 
     /**
      * photographer id
@@ -93,6 +93,11 @@ class PhotographerMedia {
 
     }
 
+    /**
+     * get source of the media with the id photographer
+     *
+     * @return  {[String]} 
+     */
     getSource() {
       // console.log(this.photographerId);
       switch (this.photographerId) {
@@ -123,7 +128,7 @@ class PhotographerMedia {
     }
 
     /**
-     * view template of an image
+     * template view of an image
      *
      * @return  {[String]}  [return html code]
      */
@@ -136,7 +141,7 @@ class PhotographerMedia {
     }
 
     /**
-     * view template of a video
+     * template view of a video
      *
      * @return  {[String]}  [return html code]
      */
