@@ -1,0 +1,27 @@
+{
+  "name": "fisheye",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "npx gulp watch",
+    "compile_sass": "npx gulp buildStyles"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AuroreTr/AuroreTrinci_6_17082021.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AuroreTr/AuroreTrinci_6_17082021/issues"
+  },
+  "homepage": "https://github.com/AuroreTr/AuroreTrinci_6_17082021#readme",
+  "devDependencies": {
+    "browser-sync": "^2.27.5",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-sass": "^5.0.0",
+    "sass": "^1.42.1"
+  }
+}

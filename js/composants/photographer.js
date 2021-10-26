@@ -1,4 +1,8 @@
-class Photographer {
+import {Tag} from "./tag.js";
+import {SimpleComponent} from "./simpleComponent.js";
+import {NavTags} from "./navtags.js";
+import {ContactButton} from "./contactButton.js";
+export class Photographer {
 
     /**
      * photographer name
@@ -65,87 +69,26 @@ class Photographer {
      * @constructor
      */
     constructor(data, domTarget, view){
+      if (view === 'fullview') {
+        const margin = document.createElement('div');
+        margin.className = 'margin';
+        domTarget.appendChild(margin);  
+      }
       this.DOM = document.createElement("article");
-      this.DOM.className = 'resume-view';
+      if (view === 'resume') this.DOM.className = 'resume-view';
+      if (view === 'fullview') this.DOM.className = 'full-view';
       domTarget.appendChild(this.DOM);
       for (const [key, value] of Object.entries(data)) {
         this[key] = value;
       }
       view === "resume" ? this.resume() : this.fullView();
-      // this.extractTags(this.tags);
-      // console.log(this.getTags(domTarget));
-
-      // this.tagFunction = this.getTags();
-
     }
 
     insertTags(domTarget){
-      // const data = await dataManager.getAllData();
-      // this.infoPhotographer = data;
-      // console.log(this.infoPhotographer);
-      // const infoPhotographer = this.infoPhotographer;
-      // this.allTags = [];
-
-      // infoPhotographer.forEach(element => {
-      //   // this.photographerTags = element.tags;
-      //   // console.log(photographerTags);
-      // this.tags = element.tags;
-      // console.log(this.tags);
-      // console.log(this.tags);
       for (const tagName of this.tags) {
         new Tag(tagName, null, domTarget);
-        // console.log(this.newTag);
-        // return `<a href='?'>${this.tag}</a>`;
-
-        // return `
-        //   <a href='?'>${name}</a>`;
-
-        
       }
-      // this.tags.forEach(name => {
-      //   this.name = name;
-      //   console.log(this.name);
-
-      //   return `
-      //     <a href='?'>${this.name}</a>`
-      //   // this.allTags.push(name);
-  
-      // });
-      // })
-    //   console.log(this.allTags);
-    //   let arrayTags = new Set(this.allTags);
-    //   console.log(arrayTags);
-
-    //   arrayTags.forEach(element)
-    // }
-
-
-    // getTags() {
-    //   this.tags.forEach(element => {
-    //     console.log(element);
-    //   });
-    // }
-
-    // getTags(domTarget) {
-      // this.DOM = document.createElement("p");
-      // targetDom.appendChild(this.DOM);
-      // domTarget.appendChild(this.DOM);
-      // this.tags.forEach(element => {
-      //   this.tag = element;
-      //   this.DOM.innerHTML+=`<a class='tags' href='?'>${this.tag}</a>`;
-      //   console.log(this.tag);
-
-
-        // this.tags.forEach(tag => {
-        //   this.tag = tag;
-        //   let tagHtml = `<a class='tags' href='?'>${this.tag}</a>`;
-        //   console.log(this.tag);
-
-        // })
     }
-    
-
-
   
     /**
      * resume view of photographer infos
@@ -175,13 +118,17 @@ class Photographer {
      */
     fullView(){
       const container = document.createElement("div");
-      new SimpleComponent("h1", this.name,container);
-      new SimpleComponent("p", this.country,container);
-      new SimpleComponent("p", this.tagline,container);
-      new NavTags(this.tags, container);
+      new SimpleComponent("h2", this.name,container, 'name-fullview');
+      new SimpleComponent('p', this.city+', '+this.country, container, 'localisation-index', 'localisation');
+      new SimpleComponent("p", this.tagline,container, 'tagline-fullview');
+      new NavTags(this.tags, null, container, 'tag-fullview');
       this.DOM.appendChild(container);
       // new contactButton();
-      // new ImagePhotographer();
-      
+      new ContactButton(this.DOM);
+      const image = document.createElement('img');
+      image.className = 'portrait-fullview';
+      image.setAttribute('src', `../images/photographers_id_photos/${this.portrait}`);
+      image.setAttribute('alt', `Photo de ${this.name}`);
+      this.DOM.appendChild(image);
     }
   }

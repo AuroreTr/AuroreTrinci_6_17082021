@@ -1,0 +1,103 @@
+.margin {
+    height: 100px;
+    padding-top: 100px;
+}
+
+.full-view {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    background-color: #fafafa;
+    border-radius: 5px;
+    .localisation, .tagline-fullview, .tag-fullview {
+        margin: 10px 0;
+    }
+    .name-fullview {
+        font-size: 64px;
+    }
+    .localisation {
+        color: $primary-color;
+        font-size: 24px;   
+    }
+    .tagline-fullview {
+        font-size: 18px;
+    }
+    .tag-fullview {
+        font-size: 18px;
+    }
+    .portrait-fullview {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+}
+
+.bground {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    // left: 0;
+    // top: 0;
+    height: 669px;
+    width: 900px;
+    overflow: auto;
+    background-color: $tertiary-color;
+    .content {
+        position: relative;
+        margin: 5% auto;
+        // height: 669px;
+        width: 900px;
+        animation-name: modalopen;
+        animation-duration: var(--modal-duration);
+        background-color: $tertiary-color;
+        border-radius: 10px;
+        overflow: hidden;
+        color: #fff;
+        // padding-top: 10px;
+        .title-form, .photographer-name {
+            font-size: 64px;
+            font-weight: 400;
+            color: #000;
+        }
+        .modal-body, .title-form, .photographer-name {
+            padding: 15px 8%;
+            margin: 15px auto;
+            .formData {
+                margin-top: 10px;
+                label {
+                    margin-top: 10px;
+                    font-size: 36px;
+                    color: #000;
+                }
+                .text-control {
+                    border-radius: 5px;
+                    border: none;
+                }
+                .text-control {
+                    width: 600px;
+                    height: 70px;
+                    background-color: #fff;
+                }
+                .message {
+                    height: 170px;
+                }
+            }
+            .btn-submit {
+                width: 170px;
+                height: 70px;
+                margin-top: 30px;
+                background-color: $primary-color;
+                font-size: 18px;
+                color: #fff;
+                border-radius: 5px;
+                border: none;
+            }
+        }  
+    }
+}
+  
+  
+
+
+  

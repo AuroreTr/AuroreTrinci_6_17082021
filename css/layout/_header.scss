@@ -1,18 +1,40 @@
 header {
-    display: flex;
-    justify-content: space-between;
+    width: 100%;
+    position: fixed;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     align-items: center;
+    margin-bottom: 30px;
 }
 
+.logo, nav, h1 {
+    grid-row: 2;
+    margin: 0 10px;
+}
 
 .logo {
     width: 12rem;
-    padding: 10px 0 0 20px;
+    padding-top: 10px;
 }
 
-nav {
+#go-up {
+    display: none;
+    width: 200px;
+    grid-column: 1/5;
+    margin: 10px auto;
+    padding: 0 5px;
+    font-size: 18px;
+    font-weight: 700;
+    background-color: #D3573C;
+    border: 1px solid #D3573C;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.tag-resumeview {
+    grid-column: 2/4;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: center;
 }
 

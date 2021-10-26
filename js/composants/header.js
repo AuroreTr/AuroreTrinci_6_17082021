@@ -1,4 +1,6 @@
-class Header{
+import {SimpleComponent} from "./simpleComponent.js";
+import {NavTags} from "./navtags.js";
+export class Header{
     // constructor(dataTags, title, domTarget){
     //     this.DOM = document.createElement("header");
     //     const tags = this.extractTags(dataTags);
@@ -11,15 +13,41 @@ class Header{
       this.DOM = document.createElement('header');
       domTarget.appendChild(this.DOM);
       this.render();
-      if (tags !== null) new NavTags(tags, tagAction, this.DOM);
-      if (title !== null) new SimpleComponent('h1', title, this.DOM);
+      this.toScroll();
+      if (tags !== null) new NavTags(tags, tagAction, this.DOM, 'tag-resumeview');
+      if (title !== null) new SimpleComponent('h1', title, this.DOM, 'title-index');
+      window.onscroll = this.toScroll.bind(this);
+
     }
 
+    /**
+     * renvoie du contenu HTML
+     *
+     * @return  {Void}  [return description]
+     */
     render() {
       // this.extractTags();
       this.DOM.innerHTML = `
       <img class='logo' src="images/logo.png" alt="logo FishEye">
+      <p id=go-up>Passer au contenu</p>
       `;
+    }
+
+    toScroll(evt) {
+      console.log(window.scrollY);
+      const goUp = document.getElementById('go-up');
+
+      if (window.scrollY > 100) {
+        goUp.style.display = 'block';
+      } else if (window.scrollY < 100) {
+        goUp.style.display = 'none';
+      }
+      // window.addEventListener('scroll', function(e) {
+        // goUp.style.display = 'block';
+      // });
+      // let scrollYPosition = window.scrollY;
+      // console.log(scrollYPosition);
+      // if (scrollYPosition < 100) goUp.style.display = 'none';
     }
 
 
