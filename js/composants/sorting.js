@@ -10,7 +10,7 @@ export class Sorting {
     /**
      * create the sorting selection
      *
-     * @return  {[Void]}  [return description]
+     * @return  {Void}  [return description]
      */
     render() {
         const thisDom = this.DOM;
@@ -28,11 +28,11 @@ export class Sorting {
     /**
      * create option tag of select tag
      *
-     * @param   {[type]}    domTarget       the dom from which the tag must be created
-     * @param   {[String]}  value           the value of the option tag
-     * @param   {[String]}  attributeValue  the value of the value attribute
+     * @param   {HTMLElement}    domTarget       the dom from which the tag must be created
+     * @param   {String}  value           the value of the option tag
+     * @param   {String}  attributeValue  the value of the value attribute
      *
-     * @return  {[Void]}                  [return description]
+     * @return  {Void}                  [return description]
      */
     createOption(domTarget, value, attributeValue) {
         const option = document.createElement('option');

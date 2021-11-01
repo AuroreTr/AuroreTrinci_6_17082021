@@ -58,12 +58,12 @@ export class Photographer {
      *
      * @param   {Object}  data  [data description]
      * @param   {String}  data.name  [data description]
-     * @param   {number}  data.id  [data description]
+     * @param   {Number}  data.id  [data description]
      * @param   {String}  data.city  [data description]
      * @param   {String}  data.country  [data description]
      * @param   {Array}   data.tags  [data description]
      * @param   {String}  data.tagline  [data description]
-     * @param   {number}  data.price  [data description]
+     * @param   {Number}  data.price  [data description]
      * @param   {string}  data.portrait  [data description]
      * 
      * @constructor

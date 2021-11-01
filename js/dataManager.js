@@ -10,6 +10,9 @@ let data;
  */
 let src;
 
+/**
+ * @param {String} source
+ */
 function initDataManagerSource(source) {
   src = source;
 }
@@ -69,10 +72,18 @@ async function getPhotographers(filters) {
 }
 
 async function getPhotographerData(photographerId) {
+  
   if (data === undefined) await getAllData();
+  let photographerInfo = '';
   data.photographers.forEach((photographer) => {
-    if (photographer.id === photographerId) return photographer;
+    // console.log(photographer.id);
+    if (photographer.id === photographerId) {
+      photographerInfo = photographer;
+    } 
+
   });
+  return photographerInfo;
+
 }
 
 function getPhotographerMedia(photographerId) {
@@ -104,5 +115,5 @@ export {
   getPhotographers,
   getPhotographerData,
   getPhotographerMedia,
-  sortList,
+  sortList
 };

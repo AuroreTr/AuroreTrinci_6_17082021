@@ -96,7 +96,7 @@ export class PhotographerMedia {
     /**
      * get source of the media with the id photographer
      *
-     * @return  {[String]} 
+    //  * @return  {String} 
      */
     getSource() {
       // console.log(this.photographerId);
@@ -130,11 +130,11 @@ export class PhotographerMedia {
     /**
      * template view of an image
      *
-     * @return  {[String]}  [return html code]
+     * @return  {String}  [return html code]
      */
     templateImage(){
       this.getSource();
-      return  `
+      return `
       <img class='media' src='${this.source}${this.image}' alt='${this.description}'>
       <p>${this.title}</p>
       <p>${this.likes}</p>`;
@@ -143,7 +143,7 @@ export class PhotographerMedia {
     /**
      * template view of a video
      *
-     * @return  {[String]}  [return html code]
+     * @return  {String}  [return html code]
      */
     templateVideo(){
       this.getSource();

@@ -6,8 +6,8 @@ import {Photographer} from "../composants/photographer.js";
 import {Sorting} from "../composants/sorting.js";
 import {PhotographerMedia} from "../composants/photographerMedia.js";
 import {Header} from "../composants/header.js";
-import {ContentForm} from "../composants/contentForm.js";
-import {Form} from "../composants/Form.js";
+// import {ContentForm} from "../composants/contentForm.js";
+// import {Form} from "../composants/Form.js";
 export class PhotographerPage{
 
     /**
@@ -35,6 +35,7 @@ export class PhotographerPage{
   
     async initPage(){
       this.infoPhotographer = await getPhotographerData(82);
+      console.log(this.infoPhotographer);
       this.mediaList = await getPhotographerMedia(82);
       this.mediaList = sortList(this.mediaList, this.actualFilter);
       this.render();
@@ -43,10 +44,11 @@ export class PhotographerPage{
     render() {
       this.domTarget.innerText="";
       new Header(this.domTarget);
-      new Photographer(this.infoPhotographer, this.domTarget, "fullView");
-      new Sorting(this.domTarget, this.sortList, this.sortClick.bind(this));
+      new Photographer(this.infoPhotographer, this.domTarget, "fullview");
+      new Sorting(this.domTarget);
+      // new Sorting(this.domTarget, this.sortList, this.sortClick.bind(this));
       this.mediaList.forEach(element => {
-        new PhotographerMedia(element);
+        new PhotographerMedia(element, this.domTarget);
       });
     }
 
@@ -54,20 +56,20 @@ export class PhotographerPage{
 
     }
 
-    createContactForm() {
+    // createContactForm() {
 
-      // const form = document.createElement('form');
-      // contentForm.appendChild(form);
-      const form = new Form(form);
+    //   // const form = document.createElement('form');
+    //   // contentForm.appendChild(form);
+    //   const form = new Form(form);
 
-      const contentForm = document.createElement('div');
-      domTarget.appendChild(this.domTarget);
-      contentForm.className = 'bground';
-      new ContentForm(form.DOM, form.validText);
-      new Input(this.DOM, {type:"text","className":"lmklmkmlk", oninput:form.validText})
+    //   const contentForm = document.createElement('div');
+    //   contentForm.appendChild(this.domTarget);
+    //   contentForm.className = 'bground';
+    //   new ContentForm(form.DOM, form.validText);
+    //   new Input(this.DOM, {type:"text","className":"lmklmkmlk", oninput:form.validText})
 
-      const formData = document.createElement('div');
-      form.appendChild(formData);
-      new FormData()
-    }
+    //   const formData = document.createElement('div');
+    //   form.appendChild(formData);
+    //   new FormData()
+    // }
   }

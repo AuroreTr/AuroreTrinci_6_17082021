@@ -1,6 +1,8 @@
-import Photographer from "../composants/photographer.js";
+import { getPhotographers, getPhotographersTags } from "../dataManager.js";
+import {Photographer} from "../composants/photographer.js";
+import {Header} from "../composants/header.js";
 
-import {getPhotographers, getPhotographersTags} from "../dataManager.js";
+// import {getPhotographers, getPhotographersTags} from "../dataManager.js";
 export class Index{
 
     /**
@@ -21,12 +23,12 @@ export class Index{
       this.render();
     }
 
-    createNewPhotographer() {
-      this.photographers.forEach(element => {
-        new Photographer(element, this.DOM, "resume");
-     });
+    // createNewPhotographer() {
+    //   this.photographers.forEach(element => {
+    //     new Photographer(element, this.DOM, "resume");
+    //  });
 
-    }
+    // }
   
     async render(){
       this.DOM.innerText="";
