@@ -9,11 +9,11 @@ export class Header{
     //     this.render();
     // }
 
-    constructor(domTarget, tags=null, tagAction=null, title=null) {
+    constructor(domTarget, tags=null, tagAction=null, title=null, toScroll=null) {
       this.DOM = document.createElement('header');
       domTarget.appendChild(this.DOM);
       this.render();
-      this.toScroll();
+      if (toScroll !== null) this.toScroll();
       if (tags !== null) new NavTags(tags, tagAction, this.DOM, 'tag-resumeview');
       if (title !== null) new SimpleComponent('h1', title, this.DOM, 'title-index');
       window.onscroll = this.toScroll.bind(this);
@@ -29,18 +29,22 @@ export class Header{
       // this.extractTags();
       this.DOM.innerHTML = `
       <img class='logo' src="images/logo.png" alt="logo FishEye">
-      <p id=go-up>Passer au contenu</p>
+      <span id=go-up>Passer au contenu</span>
       `;
     }
 
     toScroll(evt) {
       console.log(window.scrollY);
       const goUp = document.getElementById('go-up');
+      const main = document.getElementById('main-index');
 
       if (window.scrollY > 100) {
-        goUp.style.display = 'block';
+        // goUp.style.display = 'block';
+        // main.style.paddingTop = '230px';
+        // goUp.cl
       } else if (window.scrollY < 100) {
         goUp.style.display = 'none';
+        // main.style.paddingTop = '130px';
       }
       // window.addEventListener('scroll', function(e) {
         // goUp.style.display = 'block';
@@ -69,5 +73,8 @@ export class Header{
           <h2 class='title-index'>Nos photographes</h2>
         </header>
  */
+
+// accessibility :
+// quoi mettre à la place des <p> dans les infos du photographe
 
 }

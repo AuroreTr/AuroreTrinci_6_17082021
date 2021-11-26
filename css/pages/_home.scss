@@ -16,8 +16,11 @@ main {
 .resume-view {
     width: 450px;
     // margin: 15px;
-    margin-bottom: 350px;
+    margin-bottom: 80px;
     text-align: center;
+    .portrait, h2 {
+        cursor: pointer;
+    }
     .portrait {
         width: 200px;
         height: 200px;

@@ -1,0 +1,93 @@
+
+.content {
+  // display: none;
+  // position: fixed;
+  z-index: 1;
+  // left: 0;
+  // top: 0;
+  height: 669px;
+  width: 900px;
+  overflow: auto;
+  background-color: $tertiary-color;
+  margin: 5% auto;
+  // height: 669px;
+  // animation-name: modalopen;
+  // animation-duration: var(--modal-duration);
+  border-radius: 10px;
+  color: #fff;
+  // padding-top: 10px;
+  .title-form, .photographer-name {
+    margin: 5px 40px; 
+    font-size: 64px;
+    font-weight: 400;
+    color: #000;
+  }
+  .modal-body {
+      padding: 15px 8%;
+      margin: 15px auto;
+      .contact-form {
+        .formInput {
+          display: flex;
+          flex-direction: column;
+          label {
+            margin-top: 10px;
+            font-size: 36px;
+            color: #312E2E;
+          }
+          .text, .textarea {
+              border-radius: 5px;
+              border: none;
+              background-color: #fff;
+          }
+          .text {
+              width: 600px;
+              height: 70px;
+          }
+          .textarea {
+              height: 170px;
+          }
+        }
+      }
+      .btn-submit {
+          width: 170px;
+          height: 70px;
+          margin-top: 30px;
+          background-color: $primary-color;
+          font-size: 18px;
+          color: #fff;
+          border-radius: 5px;
+          border: none;
+      }
+  }  
+
+
+.close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 32px;
+    height: 32px;
+    opacity: 1;
+    cursor: pointer;
+    transform: scale(0.7);
+  }
+  .close:before,
+  .close:after {
+    position: absolute;
+    left: 15px;
+    content: " ";
+    height: 33px;
+    width: 3px;
+    background-color: #fff;
+  }
+  .close:before {
+    transform: rotate(45deg);
+  }
+  .close:after {
+    transform: rotate(-45deg);
+  }
+}
+
+
+
+  

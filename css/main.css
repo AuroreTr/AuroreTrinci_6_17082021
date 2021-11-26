@@ -29,7 +29,7 @@ h2 {
 }
 
 header {
-  width: 100%;
+  width: 90%;
   position: fixed;
   display: -ms-grid;
   display: grid;
@@ -66,6 +66,12 @@ header {
   border: 1px solid #D3573C;
   border-radius: 5px;
   text-align: center;
+  -webkit-animation: all .5s ease-in-out;
+          animation: all .5s ease-in-out;
+}
+
+#go-up::after {
+  display: block;
 }
 
 .tag-resumeview {
@@ -82,8 +88,101 @@ header {
           justify-content: center;
 }
 
-h1 {
-  padding-right: 30px;
+.content {
+  z-index: 1;
+  height: 669px;
+  width: 900px;
+  overflow: auto;
+  background-color: #DB8876;
+  margin: 5% auto;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.content .title-form, .content .photographer-name {
+  margin: 5px 40px;
+  font-size: 64px;
+  font-weight: 400;
+  color: #000;
+}
+
+.content .modal-body {
+  padding: 15px 8%;
+  margin: 15px auto;
+}
+
+.content .modal-body .contact-form .formInput {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.content .modal-body .contact-form .formInput label {
+  margin-top: 10px;
+  font-size: 36px;
+  color: #312E2E;
+}
+
+.content .modal-body .contact-form .formInput .text, .content .modal-body .contact-form .formInput .textarea {
+  border-radius: 5px;
+  border: none;
+  background-color: #fff;
+}
+
+.content .modal-body .contact-form .formInput .text {
+  width: 600px;
+  height: 70px;
+}
+
+.content .modal-body .contact-form .formInput .textarea {
+  height: 170px;
+}
+
+.content .modal-body .btn-submit {
+  width: 170px;
+  height: 70px;
+  margin-top: 30px;
+  background-color: #901C1C;
+  font-size: 18px;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+}
+
+.content .close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 32px;
+  height: 32px;
+  opacity: 1;
+  cursor: pointer;
+  -webkit-transform: scale(0.7);
+          transform: scale(0.7);
+}
+
+.content .close:before,
+.content .close:after {
+  position: absolute;
+  left: 15px;
+  content: " ";
+  height: 33px;
+  width: 3px;
+  background-color: #fff;
+}
+
+.content .close:before {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.content .close:after {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
 }
 
 .title-index {
@@ -110,8 +209,12 @@ main {
 
 .resume-view {
   width: 450px;
-  margin-bottom: 350px;
+  margin-bottom: 80px;
   text-align: center;
+}
+
+.resume-view .portrait, .resume-view h2 {
+  cursor: pointer;
 }
 
 .resume-view .portrait {
@@ -152,7 +255,7 @@ main {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding: 30px;
+  padding: 60px 40px;
   background-color: #fafafa;
   border-radius: 5px;
 }
@@ -179,114 +282,171 @@ main {
 }
 
 .full-view .portrait-fullview {
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   -o-object-fit: cover;
      object-fit: cover;
 }
 
-.bground {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  height: 669px;
-  width: 900px;
-  overflow: auto;
-  background-color: #DB8876;
-}
-
-.bground .content {
-  position: relative;
-  margin: 5% auto;
-  width: 900px;
-  -webkit-animation-name: modalopen;
-          animation-name: modalopen;
-  -webkit-animation-duration: var(--modal-duration);
-          animation-duration: var(--modal-duration);
-  background-color: #DB8876;
-  border-radius: 10px;
-  overflow: hidden;
-  color: #fff;
-}
-
-.bground .content .title-form, .bground .content .photographer-name {
-  font-size: 64px;
-  font-weight: 400;
-  color: #000;
-}
-
-.bground .content .modal-body, .bground .content .title-form, .bground .content .photographer-name {
-  padding: 15px 8%;
-  margin: 15px auto;
-}
-
-.bground .content .modal-body .formData, .bground .content .title-form .formData, .bground .content .photographer-name .formData {
-  margin-top: 10px;
-}
-
-.bground .content .modal-body .formData label, .bground .content .title-form .formData label, .bground .content .photographer-name .formData label {
-  margin-top: 10px;
-  font-size: 36px;
-  color: #000;
-}
-
-.bground .content .modal-body .formData .text-control, .bground .content .title-form .formData .text-control, .bground .content .photographer-name .formData .text-control {
+.all-medias .media {
   border-radius: 5px;
-  border: none;
 }
 
-.bground .content .modal-body .formData .text-control, .bground .content .title-form .formData .text-control, .bground .content .photographer-name .formData .text-control {
-  width: 600px;
-  height: 70px;
-  background-color: #fff;
+.all-medias .media-infos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-.bground .content .modal-body .formData .message, .bground .content .title-form .formData .message, .bground .content .photographer-name .formData .message {
-  height: 170px;
+.all-medias .media-infos .media-title {
+  font-size: 24px;
+  color: #901C1C;
 }
 
-.bground .content .modal-body .btn-submit, .bground .content .title-form .btn-submit, .bground .content .photographer-name .btn-submit {
+.all-medias .media-infos .media-likes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.all-medias .media-infos .media-likes .sum-likes {
+  margin-right: 10px;
+}
+
+.sort {
+  margin: 30px 0;
+}
+
+.sort .sort-by {
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.sort #select-sort, .sort .selection {
   width: 170px;
   height: 70px;
-  margin-top: 30px;
   background-color: #901C1C;
-  font-size: 18px;
   color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 20px;
+  border: 1px solid #901C1C;
   border-radius: 5px;
-  border: none;
+  cursor: pointer;
 }
 
-button {
-  max-height: 27px;
-  margin: 3px;
-  padding: 3px 10px;
-  background-color: #fff;
-  color: #901C1C;
-  border: .5px solid #C4C4C4;
-  border-radius: 11px;
-  font-weight: 700;
-  text-align: center;
+.sort #select-sort:focus, .sort .selection:focus {
+  border: 1px solid #901C1C;
+}
+
+.sort #select-sort {
+  border: 1px solid #901C1C;
+  border-radius: 5px;
+}
+
+.sort .selection {
+  border-bottom: 1px solid #fff;
+}
+
+.contact-btn {
+  height: 69px;
+  width: 170px;
+  font-size: 20px;
+  background-color: #901C1C;
+  color: #fff;
+  border-radius: 5px;
+  border: 1px solid #901c1c;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+  cursor: pointer;
+}
+
+.contact-btn:hover, .contact-btn:focus {
+  background-color: #DB8876;
+  color: #000;
+  border-color: #DB8876;
 }
 
 .tags {
   margin: 5px;
   padding: 2px;
+  font-family: 'DM Sans', sans-serif;
   font-size: 12px;
   font-weight: 500;
-  line-height: 200%;
+  line-height: 16px;
   border: 0.5px solid #C4C4C4;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   border-radius: 11px;
+  cursor: pointer;
   background-color: #fff;
+  color: #901C1C;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+.tags:hover {
+  background-color: #901C1C;
+  color: #fff;
+  border-color: #901C1C;
+}
+
+.tags.active {
+  background-color: #901C1C;
+  color: #fff;
+}
+
+.all-medias {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.all-medias article {
+  padding: 30px;
+}
+
+.all-medias article .media {
+  width: 300px;
+  height: 300px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.all-medias article .media-title, .all-medias article .media-likes {
+  font-size: 24px;
   color: #901C1C;
 }
 
-.media {
-  width: 250px;
-  height: 250px;
-  -o-object-fit: cover;
-     object-fit: cover;
+.all-medias article .media-title {
+  font-weight: 400;
+}
+
+.all-medias article .media-likes {
+  font-weight: 500;
 }
 /*# sourceMappingURL=main.css.map */

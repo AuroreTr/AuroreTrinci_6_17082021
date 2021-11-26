@@ -1,3 +1,5 @@
+import { SimpleComponent } from "./simpleComponent.js";
+
 export class PhotographerMedia {
 
     /**
@@ -54,6 +56,14 @@ export class PhotographerMedia {
      */
     price;
 
+    liked = false;
+
+    /**
+     * titre + likes
+     * @type {HTMLElement}
+     */
+    containerMediaInfos;
+
     /**
      * [constructor description]
      *
@@ -79,7 +89,15 @@ export class PhotographerMedia {
         this[key] = value;
       }
       this.photographerId = data.photographerId;
+      this.DOM.innerHTML = this.image ? this.templateImage() : this.templateVideo();
+
+      this.containerMediaInfos = document.createElement("p");
+      this.containerMediaInfos.className = "media-infos";
+      this.DOM.appendChild(this.containerMediaInfos);
+      
+      this.DOM.appendChild(this.containerMediaInfos);
       this.render();
+
     }
   
     /**
@@ -88,9 +106,16 @@ export class PhotographerMedia {
      * @return  {Void}  [return description]
      */
     render(){
-      this.DOM.innerHTML = this.image ? this.templateImage() : this.templateVideo();
-      // new Header();
+      console.log(this)
+      this.containerMediaInfos.innerHTML = `
+      <p class='media-title'>${this.title}</p>
+      `;
+      this.containerLikes = document.createElement('p');
+      this.containerLikes.className = 'media-likes';
+      this.containerMediaInfos.appendChild(this.containerLikes);
 
+      new SimpleComponent('p', `${this.likes}`, this.containerLikes, 'sum-likes');
+      this.addHeart();
     }
 
     /**
@@ -135,9 +160,7 @@ export class PhotographerMedia {
     templateImage(){
       this.getSource();
       return `
-      <img class='media' src='${this.source}${this.image}' alt='${this.description}'>
-      <p>${this.title}</p>
-      <p>${this.likes}</p>`;
+      <img class='media' src='${this.source}${this.image}' tilte="${this.title}" alt='${this.description}'>`;
     }
 
     /**
@@ -152,10 +175,23 @@ export class PhotographerMedia {
         <source src='${this.source}${this.video}' type='video/mp4'>
         <p>${this.description}</p>
         <p>Votre navigateur ne prend pas en charge les videos</p>
-      </video>
-      <p>${this.title}</p>
-      <p>${this.likes}</p>`;
+      </video>`;
     }
 
+    addHeart(){
+      console.log("i", this.image)
+      const coeur = document.createElement("i");
+      coeur.className = "fa-heart ";
+      coeur.id = "fa-heart";
+      coeur.classList.add( this.liked? "fas" : "far");
+      coeur.onclick = ()=>{
+        this.liked = !this.liked;
+        this.likes += this.liked ? 1 : -1;
+        this.render();
+        // @ts-ignore
+        window.page.updateLike(this.liked);
+      }
+      this.containerLikes.appendChild(coeur);
+    }
 
   }

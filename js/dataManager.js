@@ -37,9 +37,10 @@ async function getAllData() {
 /**
  * permet d'avoir tous les tags uniques de chaque photographes
  *
- * @return  {Array}  un tableau de tag
+ * @return  {Promise.<Array>}  un tableau de tag
  */
-function getPhotographersTags() {
+async function getPhotographersTags() {
+  if (data === undefined) await getAllData();
   let allTags = [];
 
   data.photographers.forEach((photographer) => {
@@ -54,10 +55,9 @@ function getPhotographersTags() {
  *
  * @param   {Array}  filters  [filters description]
  *
- * @return  {Promise.<Array>}           [return description]
+ * @return  {Array}           [return description]
  */
-async function getPhotographers(filters) {
-  if (data === undefined) await getAllData();
+function getPhotographers(filters) {
   // console.log(data);
   // if (data.length === 0) await getAllData();
   if (filters.length === 0) return data.photographers;

@@ -86,7 +86,7 @@ export class Photographer {
 
     insertTags(domTarget){
       for (const tagName of this.tags) {
-        new Tag(tagName, null, domTarget);
+        new Tag(tagName, null, domTarget, 'fullview-tag');
       }
     }
   
@@ -97,6 +97,8 @@ export class Photographer {
      */
     resume(){
       const link = document.createElement('a');
+      // @ts-ignore
+      link.onclick = ()=>{ window.changePage("photographer", this.id) };
       const image = link.appendChild(document.createElement('img'));
       image.className = 'portrait';
       image.setAttribute('src', `../images/photographers_id_photos/${this.portrait}`);

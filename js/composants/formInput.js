@@ -1,26 +1,28 @@
-class FormInput {
+
+export class FormInput {
 
     constructor(domTarget, labelFor, labelValue, inputProps, spanProps) {
         this.DOM = document.createElement('div');
         domTarget.appendChild(this.DOM);
+        this.DOM.className = 'formInput';
         this.render(this.DOM, labelFor, labelValue, inputProps, spanProps);
         domTarget.appendChild(this.DOM);
 
     }
 
     render(domTarget, labelFor, labelValue, inputProps, spanProps) {
-        this.createInput(domTarget, inputProps);
         this.createLabel(domTarget, labelValue, labelFor);
+        this.createInput(domTarget, inputProps);
         this.createSpan(domTarget, spanProps);
     }
 
     /**
      * create a label tag with value and all attributes
      *
-     * @param   {[String]}  labelValue  [label value (innerText of label)]
-     * @param   {[String]}  labelFor    [for attribute of label]
+     * @param   {String}  labelValue  [label value (innerText of label)]
+     * @param   {String}  labelFor    [for attribute of label]
      *
-     * @return  {[Void]}              [return description]
+     * @return  {Void}              [return description]
      */
     createLabel(domTarget, labelValue, labelFor) {
         const label = document.createElement('label');
@@ -35,9 +37,10 @@ class FormInput {
      *
      * @param   {HTMLElement}  domTarget  [domTarget description]
      * @param   {Object}  inputProps      [object with all attributes of the input tag]
-     * @param   {("text" | "number" | "submit")}  inputProps.type    type attribute of the input tag
+     * @param   {("text" | "textarea" | "number" | "submit")}  inputProps.type    type attribute of the input tag
      * @param   {Function} [inputProps.oninput]
      * @param   {String}  inputProps.className   class attribute of the input tag
+     * @param   {String}  inputProps.id   id attribute of the input tag
      *
      * @return {void}
      */
@@ -52,10 +55,10 @@ class FormInput {
      *
      * @param   {HTMLElement}  domTarget  [domTarget description]
      * @param   {Object}  spanProps  [domTarget description]
-     * @param   {[String]}  spanProps.spanId     [id attribute of the span]
-     * @param   {[String]}  spanProps.spanClass  [class attribute of the span]
+     * @param   {String}  spanProps.spanId     [id attribute of the span]
+     * @param   {String}  spanProps.spanClass  [class attribute of the span]
      *
-     * @return  {[void]}             [return description]
+     * @return  {Void}             [return description]
      */
     createSpan(domTarget, spanProps) {
         const span = document.createElement('span');

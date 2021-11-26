@@ -3,6 +3,7 @@ export class Sorting {
 
     constructor(domTarget) {
         this.DOM = document.createElement('div');
+        this.DOM.className = 'sort';
         domTarget.appendChild(this.DOM);
         this.render();
     }
@@ -14,15 +15,15 @@ export class Sorting {
      */
     render() {
         const thisDom = this.DOM;
-        new SimpleComponent('label', 'Trier par',thisDom);
+        new SimpleComponent('label', 'Trier par',thisDom, 'sort-by');
         const selection = document.createElement('select');
         thisDom.appendChild(selection);
         selection.setAttribute('name', 'sorting');
         selection.setAttribute('id', 'select-sort');
 
-        this.createOption(selection, 'Popularité', 'popularite');
-        this.createOption(selection, 'Date', 'date');
-        this.createOption(selection, 'Titre', 'titre');
+        this.createOption(selection, 'Popularité', 'popularite', 'selection');
+        this.createOption(selection, 'Date', 'date', 'selection');
+        this.createOption(selection, 'Titre', 'titre', 'selection');
     }
 
     /**
@@ -34,11 +35,12 @@ export class Sorting {
      *
      * @return  {Void}                  [return description]
      */
-    createOption(domTarget, value, attributeValue) {
+    createOption(domTarget, value, attributeValue, className) {
         const option = document.createElement('option');
         domTarget.appendChild(option);
         option.innerText = value;
         option.setAttribute('value', attributeValue);
+        option.className = className;
         domTarget.appendChild(option);
     }
 }

@@ -20,7 +20,7 @@ export class Index{
       */
      
       // this.DOM.innerHTML = "loading";
-      this.render();
+      this.firstRender();
     }
 
     // createNewPhotographer() {
@@ -29,18 +29,22 @@ export class Index{
     //  });
 
     // }
-  
-    async render(){
-      this.DOM.innerText="";
-      this.photographers = await getPhotographers(this.filters);
-      this.tags = getPhotographersTags();
+
+    async firstRender(){
+      this.tags = await getPhotographersTags();
       new Header(this.DOM, this.tags, this.tagClick.bind(this), 'Nos photographes');
-      const container = document.createElement('main');
-      this.DOM.appendChild(container);
+      this.main =  document.createElement('main');
+      this.main.id = 'main-index';
+      this.DOM.appendChild(this.main);
+      this.render();
+    }
+  
+    render(){
+      this.main.innerText="";
+      this.photographers = getPhotographers(this.filters);
       this.photographers.forEach(element => {
-         new Photographer(element, container, "resume");
+         new Photographer(element, this.main, "resume");
       });
-      this.DOM.appendChild(container);
     }
 
     tagClick(tagName){

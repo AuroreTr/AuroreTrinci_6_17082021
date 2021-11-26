@@ -1,6 +1,26 @@
-// static button
-.media {
-    width: 250px;
-    height: 250px;
-    object-fit: cover;
+.all-medias {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    article {
+        padding: 30px;
+        .media {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+        }
+        .media-title, .media-likes {
+            font-size: 24px;
+            color: $primary-color;
+        }
+        .media-title {
+            font-weight: 400;
+        }
+        .media-likes {
+            font-weight: 500;
+        }
+    }
 }
+
+
