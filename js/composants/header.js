@@ -34,7 +34,7 @@ export class Header{
     }
 
     toScroll(evt) {
-      console.log(window.scrollY);
+      // console.log(window.scrollY);
       const goUp = document.getElementById('go-up');
       const main = document.getElementById('main-index');
 

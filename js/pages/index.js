@@ -1,5 +1,5 @@
 import { getPhotographers, getPhotographersTags } from "../dataManager.js";
-import {Photographer} from "../composants/photographer.js";
+import {Photographer} from "../composants/photographer2.js";
 import {Header} from "../composants/header.js";
 
 // import {getPhotographers, getPhotographersTags} from "../dataManager.js";

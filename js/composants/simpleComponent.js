@@ -6,7 +6,7 @@ export class SimpleComponent {
      * @param   {String}  value      [value description]
      * @param   {HTMLElement}  domTarget  [domTarget description]
      * @param   {String}  className  [className description]
-     * @param   {Array}  classList  [classList description]
+     * @param   {String}  classList  [classList description]
      * @param   {String}  id         [id description]
      *
      * @constructor

@@ -13,7 +13,14 @@ export class Form{
 
     render() {
         // create 3 tags (span, h3, h3) into the 'content' div
-        new SimpleComponent('span', null, this.DOM, 'close', null, 'close');
+        // const closeIcon = ['fas', 'fa-times'];
+        // new SimpleComponent('i', null, this.DOM, 'close', closeIcon, 'close');
+        const close = document.createElement('i');
+        this.DOM.appendChild(close);
+        close.id = 'close';
+        close.className = 'close';
+        close.classList.add('fas', 'fa-times');
+
         new SimpleComponent('h3', 'Contactez-moi', this.DOM, 'title-form', null, 'title-form');
         new SimpleComponent('h3', 'photographer name', this.DOM, 'photographer-name', null, 'photographer-name');
 
@@ -38,6 +45,8 @@ export class Form{
         new FormInput(form, 'message', 'Votre message', {type: 'textarea', className: 'textarea message', id: 'message'}, {spanId: 'message-error', spanClass: 'verif'});
 
     }
+
+
 
 
     validText(input){

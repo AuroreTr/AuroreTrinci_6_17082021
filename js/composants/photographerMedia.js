@@ -106,7 +106,7 @@ export class PhotographerMedia {
      * @return  {Void}  [return description]
      */
     render(){
-      console.log(this)
+      // console.log(this)
       this.containerMediaInfos.innerHTML = `
       <p class='media-title'>${this.title}</p>
       `;
@@ -160,7 +160,9 @@ export class PhotographerMedia {
     templateImage(){
       this.getSource();
       return `
-      <img class='media' src='${this.source}${this.image}' tilte="${this.title}" alt='${this.description}'>`;
+      <a class='media-link' href="${this.source}">
+      <img class='media' src='${this.source}${this.image}' tilte="${this.title}" alt='${this.description}'>
+      </a>`;
     }
 
     /**
@@ -171,15 +173,17 @@ export class PhotographerMedia {
     templateVideo(){
       this.getSource();
       return `
-      <video controls class='media'>
-        <source src='${this.source}${this.video}' type='video/mp4'>
-        <p>${this.description}</p>
-        <p>Votre navigateur ne prend pas en charge les videos</p>
-      </video>`;
+      <a class='media-link' href='${this.source}'>
+        <video controls class='media'>
+          <source src='${this.source}${this.video}' type='video/mp4'>
+          <p>${this.description}</p>
+          <p>Votre navigateur ne prend pas en charge les videos</p>
+        </video>
+      </a>`;
     }
 
     addHeart(){
-      console.log("i", this.image)
+      // console.log("i", this.image)
       const coeur = document.createElement("i");
       coeur.className = "fa-heart ";
       coeur.id = "fa-heart";
@@ -193,5 +197,6 @@ export class PhotographerMedia {
       }
       this.containerLikes.appendChild(coeur);
     }
+    
 
   }

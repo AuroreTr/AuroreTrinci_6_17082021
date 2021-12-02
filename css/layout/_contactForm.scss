@@ -69,7 +69,9 @@
     height: 32px;
     opacity: 1;
     cursor: pointer;
-    transform: scale(0.7);
+    color: $primary-color;
+    font-size: 24px;
+    // transform: scale(0.7);
   }
   .close:before,
   .close:after {

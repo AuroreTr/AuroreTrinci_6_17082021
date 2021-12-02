@@ -86,26 +86,49 @@ async function getPhotographerData(photographerId) {
 
 }
 
-function getPhotographerMedia(photographerId) {
+function getPhotographerMedia(photographerId, filter) {
   const list = [];
   data.media.forEach((media) => {
     if (media.photographerId === photographerId) {
       list.push(media);
     }
   });
-  return list;
+  return sortList(list, filter);
 }
 
 /**
  * [sortList description]
  *
  * @param   {Array}  list   [list description]
- * @param   {String}  index  [index description]
+ * @param   {("Popularité" | "Date" | "Titre")}  index  [index description]
  *
  * @return  {Array}         [return description]
  */
 function sortList(list, index) {
-  return list;
+  let method;
+  switch(index){
+    case "Popularité" : 
+      method = (a, b) => { return a.likes - b.likes; };
+      break;
+    case "Date" : 
+      method = (a, b) => { 
+        const da = new Date(a.date);
+        const db = new Date(b.date);
+        // @ts-ignore
+        return (da - db); 
+      };
+      break;
+    default : 
+      method = (a, b) => { 
+        const fa = a.title.toLowerCase();
+        const fb = b.title.toLowerCase();
+        if (fa < fb)  return-1;
+        if (fa > fb) return 1;
+        return 0;
+      }
+      break;
+  }
+  return list.sort(method);
 }
 
 export {
@@ -114,6 +137,5 @@ export {
   getPhotographersTags,
   getPhotographers,
   getPhotographerData,
-  getPhotographerMedia,
-  sortList
+  getPhotographerMedia
 };

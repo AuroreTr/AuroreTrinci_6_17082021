@@ -1,10 +1,12 @@
 import {SimpleComponent} from "./simpleComponent.js";
 export class Sorting {
 
-    constructor(domTarget) {
+    constructor(domTarget, props, callback) {
         this.DOM = document.createElement('div');
         this.DOM.className = 'sort';
         domTarget.appendChild(this.DOM);
+        this.callback = callback;
+        this.list = props;
         this.render();
     }
 
@@ -16,14 +18,16 @@ export class Sorting {
     render() {
         const thisDom = this.DOM;
         new SimpleComponent('label', 'Trier par',thisDom, 'sort-by');
-        const selection = document.createElement('select');
-        thisDom.appendChild(selection);
-        selection.setAttribute('name', 'sorting');
-        selection.setAttribute('id', 'select-sort');
-
-        this.createOption(selection, 'Popularité', 'popularite', 'selection');
-        this.createOption(selection, 'Date', 'date', 'selection');
-        this.createOption(selection, 'Titre', 'titre', 'selection');
+        this.selection = document.createElement('select');
+        thisDom.appendChild(this.selection);
+        this.selection.setAttribute('name', 'sorting');
+        this.selection.setAttribute('id', 'select-sort');
+        this.list.forEach(element => {
+            this.createOption(this.selection, element, element, 'selection');
+        });
+        this.selection.onchange = ()=>{
+            this.callback(this.selection.value);
+        }
     }
 
     /**

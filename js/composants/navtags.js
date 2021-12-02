@@ -5,7 +5,7 @@ export class NavTags{
         if (className !== null) this.DOM.className = className;
         
         domTarget.appendChild(this.DOM);
-        console.log(tags);
+        // console.log(tags);
         tags.forEach(tag => {
             new Tag(tag, tagAction, this.DOM, btnClassName);
             
