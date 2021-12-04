@@ -242,7 +242,7 @@ export class Form {
                             break;
                     }
                     if (erreurs === 0) {
-                        this.modalBody.innerHTML = `<p></p><p id='validation-message'>Nous vous remercions pour votre participation !</p><input id='close2' class='close2' value='Fermer'>`;
+                        this.modalBody.innerHTML = `<p></p><p id='validation-message'>Je vous remercie pour votre message et vous répondrai dans les meilleurs délais.</p><input id='close2' class='close2' value='Fermer'>`;
                         return true;
                     }
                 });
