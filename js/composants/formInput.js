@@ -47,6 +47,7 @@ export class FormInput {
      createInput(domTarget, inputProps){
             const input = document.createElement("input");
             domTarget.appendChild(input);
+            input.setAttribute('required', '');
             Object.assign(input, inputProps);
         }
 
@@ -55,8 +56,8 @@ export class FormInput {
      *
      * @param   {HTMLElement}  domTarget  [domTarget description]
      * @param   {Object}  spanProps  [domTarget description]
-     * @param   {String}  spanProps.spanId     [id attribute of the span]
-     * @param   {String}  spanProps.spanClass  [class attribute of the span]
+     * @param   {String}  spanProps.id     [id attribute of the span]
+     * @param   {String}  spanProps.className  [class attribute of the span]
      *
      * @return  {Void}             [return description]
      */
@@ -64,5 +65,6 @@ export class FormInput {
         const span = document.createElement('span');
         domTarget.appendChild(span);
         Object.assign(span, spanProps);
+        // console.log(spanProps);
     }
 }

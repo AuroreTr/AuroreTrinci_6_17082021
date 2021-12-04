@@ -89,26 +89,58 @@ header {
 }
 
 .content {
+  display: none;
+  position: fixed;
   z-index: 1;
-  height: 669px;
-  width: 900px;
-  overflow: auto;
-  background-color: #DB8876;
-  margin: 5% auto;
-  border-radius: 10px;
-  color: #fff;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
-.content .title-form, .content .photographer-name {
-  margin: 5px 40px;
-  font-size: 64px;
+.content .modal-body {
+  position: absolute;
+  width: 50%;
+  height: 90%;
+  left: 25%;
+  top: 5%;
+  border-radius: 5px;
+  background-color: #DB8876;
+}
+
+.content .modal-body .close {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  cursor: pointer;
+  color: #901C1C;
+  font-size: 34px;
+}
+
+.content .modal-body .title-form,
+.content .modal-body .photographer-name {
+  margin: 0 40px;
+  font-size: 40px;
   font-weight: 400;
   color: #000;
 }
 
-.content .modal-body {
-  padding: 15px 8%;
-  margin: 15px auto;
+.content .modal-body .photographer-name {
+  margin-bottom: 20px;
+}
+
+.content .modal-body .contact-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .content .modal-body .contact-form .formInput {
@@ -119,70 +151,64 @@ header {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
 }
 
 .content .modal-body .contact-form .formInput label {
   margin-top: 10px;
-  font-size: 36px;
-  color: #312E2E;
+  width: 85%;
+  font-size: 24px;
+  color: #312e2e;
 }
 
-.content .modal-body .contact-form .formInput .text, .content .modal-body .contact-form .formInput .textarea {
+.content .modal-body .contact-form .formInput .text,
+.content .modal-body .contact-form .formInput .textarea {
+  width: 85%;
   border-radius: 5px;
   border: none;
   background-color: #fff;
 }
 
 .content .modal-body .contact-form .formInput .text {
-  width: 600px;
-  height: 70px;
+  height: 40px;
 }
 
 .content .modal-body .contact-form .formInput .textarea {
-  height: 170px;
+  height: 120px;
 }
 
-.content .modal-body .btn-submit {
+.content .modal-body .contact-form .formInput .verif {
+  width: 85%;
+  font-size: 12px;
+  color: red;
+}
+
+.content .modal-body .contact-form .submit-btn-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  width: 85%;
+}
+
+.content .modal-body .contact-form .submit-btn-container .submit-btn {
   width: 170px;
-  height: 70px;
+  height: 50px;
   margin-top: 30px;
   background-color: #901C1C;
   font-size: 18px;
   color: #fff;
   border-radius: 5px;
   border: none;
-}
-
-.content .close {
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  width: 32px;
-  height: 32px;
-  opacity: 1;
-  cursor: pointer;
-  color: #901C1C;
-  font-size: 24px;
-}
-
-.content .close:before,
-.content .close:after {
-  position: absolute;
-  left: 15px;
-  content: " ";
-  height: 33px;
-  width: 3px;
-  background-color: #fff;
-}
-
-.content .close:before {
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
-}
-
-.content .close:after {
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
 }
 
 .title-index {
