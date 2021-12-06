@@ -1,4 +1,4 @@
-.modale-container {
+.lightbox-container {
   display: none;
   position: fixed;
   left: 0;
@@ -6,7 +6,7 @@
   bottom: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  .modale {
+  .lightbox {
     width: 90%;
     height: 90%;
     margin: auto;
@@ -44,7 +44,7 @@
     .next {
       cursor: pointer;
     }
-    .modale-content {
+    .lightbox-content {
       width: 80%;
       height: 90%;
       position: fixed;
@@ -64,6 +64,6 @@
   }
 }
 
-.modale-container.show {
+.lightbox-container.show {
   display: initial;
 }

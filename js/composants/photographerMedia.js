@@ -160,7 +160,7 @@ export class PhotographerMedia {
     templateImage(){
       this.getSource();
       return `
-      <a class='media-link' href="${this.source}">
+      <a class='media-link' href="${this.source}${this.image}">
       <img class='media' src='${this.source}${this.image}' tilte="${this.title}" alt='${this.description}'>
       </a>`;
     }
@@ -173,7 +173,7 @@ export class PhotographerMedia {
     templateVideo(){
       this.getSource();
       return `
-      <a class='media-link' href='${this.source}'>
+      <a class='media-link' href='${this.source}${this.video}'>
         <video controls class='media'>
           <source src='${this.source}${this.video}' type='video/mp4'>
           <p>${this.description}</p>

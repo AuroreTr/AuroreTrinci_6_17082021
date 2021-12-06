@@ -243,6 +243,17 @@ export class Form {
                     }
                     if (erreurs === 0) {
                         this.modalBody.innerHTML = `<p></p><p id='validation-message'>Je vous remercie pour votre message et vous répondrai dans les meilleurs délais.</p><input id='close2' class='close2' value='Fermer'>`;
+
+                        const closeValidateForm = document.getElementById('close2');
+                        closeValidateForm.addEventListener("click", () => {
+                            this.DOM.style.display = "none";
+                        });
+
+                        window.addEventListener("click", (e) => {
+                            if (e.target === this.DOM) {
+                              this.DOM.style.display = "none";
+                            }
+                        });
                         return true;
                     }
                 });

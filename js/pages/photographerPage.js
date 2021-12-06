@@ -23,10 +23,11 @@ export class PhotographerPage {
 
   constructor(domTarget, id) {
     this.domTarget = domTarget;
-    this.domTarget.innerText = "loading";
+    // this.domTarget.innerText = "loading";
     this.sortList = ["Popularité", "Date", "Titre"];
     this.photographerId = id;
     this.render();
+    // console.log(this.domTarget);
   }
 
   async render() {
@@ -41,9 +42,10 @@ export class PhotographerPage {
     this.allMedias.className = "all-medias";
     this.domTarget.appendChild(this.allMedias);
 
+    new Form(this.domTarget);
+
     new Lightbox(this.domTarget, this.photographerId);
 
-    new Form(this.domTarget);
     this.updateMedia(this.sortList[0]);
 
     const totalLikesContainer = document.createElement("p");
@@ -51,8 +53,29 @@ export class PhotographerPage {
     this.totalLikesNb = document.createElement("p");
     totalLikesContainer.appendChild(this.totalLikesNb);
     this.updateLike();
+    // this.launchLightbox();
     this.manageContactFormModale();
+
+    // const links = document.querySelectorAll(".media-link");
+    // for (let link of links) {
+    //   link.addEventListener("click", function (e) {
+    //     e.preventDefault();
+    //     console.log(link);
+    //     new Lightbox(this.domTarget, this.photographerId);
+
+    //   });
+    // }
   }
+
+//   launchLightbox() {
+//     const links = Array.from(document.querySelectorAll('a[href$=".png"], a[href$=".jpg"], a[href$=".jpeg"], a[href$=".mp4"]'));
+//     const gallery = links.map(link => link.getAttribute('href'));
+//     links.forEach(link => link.addEventListener('click', (e) => {
+//         e.preventDefault()
+//         console.log(link);
+//         // new Lightbox(e.getAttribute('href'), gallery)
+//         }));
+// }
 
   updateMedia(filter) {
     this.allMedias.innerText = "";
