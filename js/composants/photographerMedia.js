@@ -108,13 +108,13 @@ export class PhotographerMedia {
     render(){
       // console.log(this)
       this.containerMediaInfos.innerHTML = `
-      <p class='media-title'>${this.title}</p>
+      <h4 class='media-title'>${this.title}</h4>
       `;
-      this.containerLikes = document.createElement('p');
+      this.containerLikes = document.createElement('span');
       this.containerLikes.className = 'media-likes';
       this.containerMediaInfos.appendChild(this.containerLikes);
 
-      new SimpleComponent('p', `${this.likes}`, this.containerLikes, 'sum-likes');
+      new SimpleComponent('span', `${this.likes}`, this.containerLikes, 'sum-likes');
       this.addHeart();
     }
 
@@ -160,9 +160,8 @@ export class PhotographerMedia {
     templateImage(){
       this.getSource();
       return `
-      <a class='media-link' href="${this.source}${this.image}">
-      <img class='media' src='${this.source}${this.image}' tilte="${this.title}" alt='${this.description}'>
-      </a>`;
+      <img class='media' src='${this.source}${this.image}' tilte="${this.title}" onclick="page.startLightbox('${this.id}')" alt='${this.description}'>
+      `;
     }
 
     /**

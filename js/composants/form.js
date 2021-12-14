@@ -94,26 +94,7 @@ export class Form {
         submitBtn.id = "submit-btn";
         submitBtn.setAttribute('type', 'submit');
         submitBtn.innerText = 'Envoyer';
-
-        const errorMessage = document.querySelectorAll('.verif');
-        errorMessage.forEach(element => {
-            if (element.innerHTML !== null) {
-                const labels = document.querySelectorAll('label');
-                labels.forEach(element => {
-                    element.style.marginTop = '0';
-                });
-            }
-        });
     }
-
-    // validContactForm() {
-    // this.validInputs();
-    // document.getElementById("submit-btn").addEventListener("click", validBtn());
-    // const submitBtnId = document.querySelectorAll('#submit-btn');
-    // submitBtnId.forEach((btn) => btn.addEventListener("click", this.validBtn));
-    // this.validBtn();
-
-    // }
 
     // validate string length for the first name and the last name
     validNames(input, errorMessage) {
@@ -160,38 +141,6 @@ export class Form {
         errorMessage.innerHTML = "";
         return true;
     }
-
-
-    // validBtn() {
-    //     const submitBtnId = document.querySelectorAll('#submit-btn');
-    //     submitBtnId.forEach((btn) => btn.addEventListener('click', function (e) {
-
-    //         const inputList = document.querySelectorAll("input");
-    //         e.preventDefault();
-    //         console.log(inputList);
-    //         let erreurs = 0;
-    //         inputList.forEach((element) => {
-    //             console.log(element);
-    //             const domError = document.getElementById(element.id + "-error");
-    //             switch (element.type) {
-    //                 case "text":
-    //                     console.log('ok');
-    //                     if (!this.validNames(element, domError)) erreurs++;
-    //                     break;
-    //                 case "email":
-    //                     if (!this.validEmail(element, domError)) erreurs++;
-    //                     break;
-    //             }
-    //         });
-
-    //         if (erreurs === 0) {
-    //             this.modalBody.innerHTML = `<p></p><p id='validation-message'>Nous vous remercions pour votre participation !</p><input id='close2' class='close2' value='Fermer'>`;
-    //             return true;
-    //         }
-    //     }));
-    //     return false;
-
-    // }
 
     validInputs() {
         const inputList = document.querySelectorAll("input");
@@ -242,6 +191,10 @@ export class Form {
                             break;
                     }
                     if (erreurs === 0) {
+                        inputList.forEach((element) => {
+                            console.log(element.value);
+                        });
+                        
                         this.modalBody.innerHTML = `<p></p><p id='validation-message'>Je vous remercie pour votre message et vous répondrai dans les meilleurs délais.</p><input id='close2' class='close2' value='Fermer'>`;
 
                         const closeValidateForm = document.getElementById('close2');
