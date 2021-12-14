@@ -105,9 +105,9 @@ export class Photographer {
       image.setAttribute('alt', `Photo de ${this.name}`);
       new SimpleComponent('h2', this.name, link);
       this.DOM.appendChild(link);
-      new SimpleComponent('p', this.city+', '+this.country, this.DOM, 'localisation-index', 'localisation');
-      new SimpleComponent('p', this.tagline, this.DOM, 'tagline-index', 'tagline');
-      new SimpleComponent('p', this.price+'€/jour', this.DOM, 'price');
+      new SimpleComponent('address', this.city+', '+this.country, this.DOM, 'localisation-index', 'localisation');
+      new SimpleComponent('span', this.tagline, this.DOM, 'tagline-index', 'tagline');
+      new SimpleComponent('span', this.price+'€/jour', this.DOM, 'price');
       const container = document.createElement('p');
       this.DOM.appendChild(container);
       this.insertTags(container);
@@ -120,9 +120,10 @@ export class Photographer {
      */
     fullView(){
       const container = document.createElement("div");
+      container.classList.add('photographer-info');
       new SimpleComponent("h2", this.name,container, 'name-fullview');
-      new SimpleComponent('p', this.city+', '+this.country, container, 'localisation-index', 'localisation');
-      new SimpleComponent("p", this.tagline,container, 'tagline-fullview');
+      new SimpleComponent('address', this.city+', '+this.country, container, 'localisation-index', 'localisation');
+      new SimpleComponent("span", this.tagline,container, 'tagline-fullview');
       new NavTags(this.tags, null, container, 'tag-fullview');
       this.DOM.appendChild(container);
       // new contactButton();

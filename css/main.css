@@ -1,3 +1,10 @@
+/**
+ * color chart
+ */
+/**
+ * responsive breakpoints
+ * @media(min-width: $)
+ */
 *, ::before, ::after {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -39,6 +46,8 @@ header {
       -ms-flex-align: center;
           align-items: center;
   margin-bottom: 30px;
+  padding-bottom: 40px;
+  background-color: #fff;
 }
 
 .logo, nav, h1 {
@@ -88,6 +97,22 @@ header {
           justify-content: center;
 }
 
+@media (max-width: 992px) {
+  header {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  header .tag-resumeview {
+    margin-top: 20px;
+    margin-bottom: 15px;
+  }
+}
+
 .content {
   display: none;
   position: fixed;
@@ -101,10 +126,13 @@ header {
 
 .content .modal-body {
   position: absolute;
-  width: 50%;
+  width: 560px;
   height: 90%;
-  left: 25%;
-  top: 5%;
+  overflow: auto;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   border-radius: 5px;
   background-color: #DB8876;
 }
@@ -182,8 +210,10 @@ header {
 
 .content .modal-body .contact-form .formInput .verif {
   width: 85%;
-  font-size: 12px;
-  color: red;
+  margin-top: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #d61616;
 }
 
 .content .modal-body .contact-form .submit-btn-container {
@@ -203,7 +233,7 @@ header {
 .content .modal-body .contact-form .submit-btn-container .submit-btn {
   width: 170px;
   height: 50px;
-  margin-top: 30px;
+  margin: 30px 0;
   background-color: #901C1C;
   font-size: 18px;
   color: #fff;
@@ -230,11 +260,11 @@ main {
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  padding-top: 130px;
+  padding-top: 150px;
 }
 
 .resume-view {
-  width: 450px;
+  width: 350px;
   margin-bottom: 80px;
   text-align: center;
 }
@@ -267,6 +297,12 @@ main {
 .resume-view .price {
   font-size: 9px;
   color: #757575;
+}
+
+@media (max-width: 992px) {
+  main {
+    padding-top: 250px;
+  }
 }
 
 .margin {
@@ -315,11 +351,28 @@ main {
      object-fit: cover;
 }
 
-.all-medias .media {
+.all-medias article {
+  width: 350px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.all-medias article .media {
   border-radius: 5px;
 }
 
-.all-medias .media-infos {
+.all-medias article .media-infos {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -330,12 +383,12 @@ main {
           justify-content: space-between;
 }
 
-.all-medias .media-infos .media-title {
+.all-medias article .media-infos .media-title {
   font-size: 24px;
   color: #901C1C;
 }
 
-.all-medias .media-infos .media-likes {
+.all-medias article .media-infos .media-likes {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -347,10 +400,6 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.all-medias .media-infos .media-likes .sum-likes {
-  margin-right: 10px;
 }
 
 .sort {
@@ -387,6 +436,41 @@ main {
 
 .sort .selection {
   border-bottom: 1px solid #fff;
+}
+
+@media (max-width: 992px) {
+  .full-view {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+    justify-items: center;
+  }
+  .full-view .portrait-fullview {
+    -ms-grid-row: 1;
+    grid-row: 1;
+  }
+  .full-view .photographer-info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin: 30px 0;
+  }
+  .sort {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
 }
 
 .contact-btn {
@@ -450,6 +534,9 @@ main {
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 .all-medias article {
@@ -457,23 +544,38 @@ main {
 }
 
 .all-medias article .media {
-  width: 300px;
+  width: 350px;
   height: 300px;
   -o-object-fit: cover;
      object-fit: cover;
 }
 
-.all-medias article .media-title, .all-medias article .media-likes {
+.all-medias article .media-infos {
+  width: 350px;
+  padding-top: 5px;
+}
+
+.all-medias article .media-infos .media-title, .all-medias article .media-infos .media-likes {
   font-size: 24px;
   color: #901C1C;
 }
 
-.all-medias article .media-title {
+.all-medias article .media-infos .media-title {
   font-weight: 400;
 }
 
-.all-medias article .media-likes {
+.all-medias article .media-infos .media-likes {
   font-weight: 500;
+}
+
+.all-medias article .media-infos .media-likes .sum-likes {
+  width: 35px;
+}
+
+.all-medias article .media-infos .media-likes .fa-heart {
+  width: 30px;
+  margin-left: 3px;
+  padding-right: 5px;
 }
 
 .lightbox-container {
@@ -543,8 +645,8 @@ main {
 }
 
 .lightbox-container .lightbox .lightbox-content img {
-  width: 100%;
-  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
   position: fixed;
   top: 50%;
   left: 50%;

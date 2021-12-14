@@ -5,6 +5,9 @@ header {
     grid-template-columns: repeat(4, 1fr);
     align-items: center;
     margin-bottom: 30px;
+    padding-bottom: 40px;
+    background-color: #fff;
+
 }
 
 .logo, nav, h1 {
@@ -42,20 +45,13 @@ header {
     justify-content: center;
 }
 
-// h1 {
-//     padding-right: 30px;
-// }
-
-// nav div a {
-//     margin-bottom: 20px;
-//     @include secondary-dark-theme;
-//     background-color: #DB8876;
-//     color: #000;
-//     border: none;
-//     border-radius: 3px;
-//     padding: 0 8px;
-//     text-align: center;
-//     font-size: 1rem;
-//     font-weight: 700;
-// }
-
+@media (max-width: $large-screen) {
+    header {
+        display: flex;
+        flex-direction: column;
+        .tag-resumeview {
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+    }
+}

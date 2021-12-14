@@ -1,3 +1,16 @@
+/**
+ * color chart
+ */
 $primary-color: #901C1C;
 $secondary-color: #D3573C;
 $tertiary-color: #DB8876;
+
+/**
+ * responsive breakpoints
+ * @media(min-width: $)
+ */
+$xx-large-screen: 1400px;
+$x-large-screen: 1200px;
+$large-screen: 992px;
+$medium-screen: 768px;
+$small-screen: 576px;

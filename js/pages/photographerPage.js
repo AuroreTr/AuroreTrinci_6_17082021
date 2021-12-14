@@ -44,7 +44,8 @@ export class PhotographerPage {
 
     new Form(this.domTarget);
 
-    new Lightbox(this.domTarget, this.photographerId);
+    
+    // new Lightbox(this.domTarget, this.photographerId, this.mediaList);
 
     this.updateMedia(this.sortList[0]);
 
@@ -81,8 +82,8 @@ export class PhotographerPage {
     this.allMedias.innerText = "";
     // new Sorting(this.domTarget, this.sortList, this.sortClick.bind(this));
 
-    const mediaList = getPhotographerMedia(this.photographerId, filter);
-    mediaList.forEach((element) => {
+    this.mediaList = getPhotographerMedia(this.photographerId, filter);
+    this.mediaList.forEach((element) => {
       new PhotographerMedia(element, this.allMedias);
     });
   }
@@ -139,5 +140,10 @@ export class PhotographerPage {
         contactForm.style.display = "none";
       }
     });
+  }
+
+  startLightbox(id){
+    console.log("ok", id, this.mediaList)
+    new Lightbox(this.domTarget, id, this.mediaList)
   }
 }
