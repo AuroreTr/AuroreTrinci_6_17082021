@@ -172,5 +172,5 @@ export {
   getPhotographerData,
   getPhotographerMedia,
   getSource,
-  getMediaTitle
+  getMediaTitle,
 };
