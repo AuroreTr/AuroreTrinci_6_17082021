@@ -131,7 +131,7 @@ export class Photographer {
       new ContactButton(this.DOM);
       const image = document.createElement('img');
       image.className = 'portrait-fullview';
-      image.setAttribute('src', `../images/${this.portrait}`);
+      image.setAttribute('src', `images/${this.portrait}`);
       image.setAttribute('alt', `Photo de ${this.name}`);
       this.DOM.appendChild(image);
     }

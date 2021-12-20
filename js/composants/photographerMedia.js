@@ -90,7 +90,7 @@ export class PhotographerMedia {
         this[key] = value;
       }
       this.photographerId = data.photographerId;
-      this.source = getSource(this.photographerId);
+      this.source = 'images/';
       this.DOM.innerHTML = this.image ? this.templateImage() : this.templateVideo();
 
       this.containerMediaInfos = document.createElement("p");
