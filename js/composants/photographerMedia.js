@@ -1,4 +1,5 @@
 import { SimpleComponent } from "./simpleComponent.js";
+import { getSource } from "../dataManager.js";
 
 export class PhotographerMedia {
 
@@ -89,6 +90,7 @@ export class PhotographerMedia {
         this[key] = value;
       }
       this.photographerId = data.photographerId;
+      this.source = getSource(this.photographerId);
       this.DOM.innerHTML = this.image ? this.templateImage() : this.templateVideo();
 
       this.containerMediaInfos = document.createElement("p");
@@ -118,39 +120,6 @@ export class PhotographerMedia {
       this.addHeart();
     }
 
-    /**
-     * get source of the media with the id photographer
-     *
-    //  * @return  {String} 
-     */
-    getSource() {
-      // console.log(this.photographerId);
-      switch (this.photographerId) {
-        case 82:
-          this.source = '../images/Tracy/';
-          break;
-        case 195:
-          this.source = '../images/Marcel/';
-          break;
-        case 243:
-          this.source = '../images/Mimi/';
-          break;
-        case 527:
-          this.source = '../images/Nabeel/';
-          break;
-        case 925:
-          this.source = '../images/Rhode/';
-          break;
-        case 930:
-          this.source = '../images/Ellie_Rose/';
-          break;
-                              
-        default:
-          const err = 'Impossible de trouver la source du media';
-          console.log(err);
-          break;
-      }
-    }
 
     /**
      * template view of an image
@@ -158,7 +127,6 @@ export class PhotographerMedia {
      * @return  {String}  [return html code]
      */
     templateImage(){
-      this.getSource();
       return `
       <img class='media' src='${this.source}${this.image}' tilte="${this.title}" onclick="page.startLightbox('${this.id}')" alt='${this.description}'>
       `;
@@ -170,7 +138,6 @@ export class PhotographerMedia {
      * @return  {String}  [return html code]
      */
     templateVideo(){
-      this.getSource();
       return `
       <a class='media-link' href='${this.source}${this.video}'>
         <video controls class='media'>

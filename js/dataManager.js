@@ -72,18 +72,15 @@ function getPhotographers(filters) {
 }
 
 async function getPhotographerData(photographerId) {
-  
   if (data === undefined) await getAllData();
-  let photographerInfo = '';
+  let photographerInfo = "";
   data.photographers.forEach((photographer) => {
     // console.log(photographer.id);
     if (photographer.id === photographerId) {
       photographerInfo = photographer;
-    } 
-
+    }
   });
   return photographerInfo;
-
 }
 
 function getPhotographerMedia(photographerId, filter) {
@@ -96,6 +93,12 @@ function getPhotographerMedia(photographerId, filter) {
   return sortList(list, filter);
 }
 
+function getMediaTitle(photographerId, filter, id) {
+  const mediaList = getPhotographerMedia(photographerId, filter);
+  console.log(mediaList);
+  if (data.media.id === id) return data.media.title;
+}
+
 /**
  * [sortList description]
  *
@@ -106,41 +109,59 @@ function getPhotographerMedia(photographerId, filter) {
  */
 function sortList(list, index) {
   let method;
-  switch(index){
-    case "Popularité" : 
-      method = (a, b) => { return a.likes - b.likes; };
+  switch (index) {
+    case "Popularité":
+      method = (a, b) => {
+        return a.likes - b.likes;
+      };
       break;
-    case "Date" : 
-      method = (a, b) => { 
+    case "Date":
+      method = (a, b) => {
         const da = new Date(a.date);
         const db = new Date(b.date);
         // @ts-ignore
-        return (da - db); 
+        return da - db;
       };
       break;
-    default : 
-      method = (a, b) => { 
+    default:
+      method = (a, b) => {
         const fa = a.title.toLowerCase();
         const fb = b.title.toLowerCase();
-        if (fa < fb)  return-1;
+        if (fa < fb) return -1;
         if (fa > fb) return 1;
         return 0;
-      }
+      };
       break;
   }
   return list.sort(method);
 }
 
-function getMedia(id){
-  const max = data.media.length;
-  for(let i=0; i<max; i++){
-    if (data.media[i].id === id) return {
-      prevId : data.media[i-1].id,
-      nextId : data.media[i+1].id,
-      media : data.media[i]
-    }
+/**
+     * get source of the media with the id photographer
+     *
+    //  * @return  {String} 
+     */
+function getSource(photographerId) {
+  // console.log(this.photographerId);
+  switch (photographerId) {
+    case 82:
+      return "../images/Tracy/";
+    case 195:
+      return "../images/Marcel/";
+    case 243:
+      return "../images/Mimi/";
+    case 527:
+      return "../images/Nabeel/";
+    case 925:
+      return "../images/Rhode/";
+    case 930:
+      return "../images/Ellie_Rose/";
+
+    default:
+      const err = "Impossible de trouver la source du media";
+      console.log(err);
+      break;
   }
-  console.error("media",id,"non trouvé");
 }
 
 export {
@@ -150,5 +171,6 @@ export {
   getPhotographers,
   getPhotographerData,
   getPhotographerMedia,
-  getMedia
+  getSource,
+  getMediaTitle
 };
