@@ -97,11 +97,12 @@ export class Photographer {
      */
     resume(){
       const link = document.createElement('a');
+      link.classList.add('link-portrait');
       // @ts-ignore
       link.onclick = ()=>{ window.changePage("photographer", this.id) };
       const image = link.appendChild(document.createElement('img'));
       image.className = 'portrait';
-      image.setAttribute('src', `../images/${this.portrait}`);
+      image.setAttribute('src', `images/${this.portrait}`);
       image.setAttribute('alt', `Photo de ${this.name}`);
       new SimpleComponent('h2', this.name, link);
       this.DOM.appendChild(link);

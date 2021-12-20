@@ -15,19 +15,31 @@ main {
 
 .resume-view {
     width: 350px;
-    // margin: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-bottom: 80px;
-    text-align: center;
-    .portrait, h2 {
-        cursor: pointer;
-    }
-    .portrait {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        object-fit: cover;
+    // text-align: center;
+    .link-portrait {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .portrait, h2 {
+            cursor: pointer;
+        }
+        .portrait {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+        }    
     }
     p {
+        padding: 2px;
+    }
+    .localisation-index,
+    .tagline-index,
+    .price {
         padding: 2px;
     }
     .localisation {
@@ -38,6 +50,7 @@ main {
         font-size: 10px;
     }
     .price {
+        margin-bottom: 5px;
         font-size: 9px;
         color: #757575;
     }
