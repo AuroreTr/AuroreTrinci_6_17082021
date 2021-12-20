@@ -145,7 +145,12 @@ export class PhotographerPage {
   startLightbox(id){
     console.log("ok", id, this.mediaList)
 <<<<<<< HEAD
+<<<<<<< HEAD
     new Lightbox(this.domTarget, id, this.mediaList)
+=======
+    new Lightbox(this.domTarget, id, this.mediaList, this.photographerId);
+    document.getElementById('container-lightbox').style.display = 'block';
+>>>>>>> preprod
 =======
     new Lightbox(this.domTarget, id, this.mediaList, this.photographerId);
     document.getElementById('container-lightbox').style.display = 'block';

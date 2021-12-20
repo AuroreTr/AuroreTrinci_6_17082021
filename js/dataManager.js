@@ -136,7 +136,6 @@ function sortList(list, index) {
   return list.sort(method);
 }
 
-<<<<<<< HEAD
 function getMedia(id){
   const max = data.media.length;
   for(let i=0; i<max; i++){
@@ -147,7 +146,6 @@ function getMedia(id){
     }
   }
   console.error("media",id,"non trouvé");
-=======
 /**
      * get source of the media with the id photographer
      *
@@ -174,7 +172,6 @@ function getSource(photographerId) {
       console.log(err);
       break;
   }
->>>>>>> preprod
 }
 
 export {
@@ -184,10 +181,7 @@ export {
   getPhotographers,
   getPhotographerData,
   getPhotographerMedia,
-<<<<<<< HEAD
-  getMedia
-=======
+  getMedia,
   getSource,
-  getMediaTitle
->>>>>>> preprod
-};
+  getMediaTitle,
+}
