@@ -136,16 +136,16 @@ function sortList(list, index) {
   return list.sort(method);
 }
 
-function getMedia(id){
-  const max = data.media.length;
-  for(let i=0; i<max; i++){
-    if (data.media[i].id === id) return {
-      prevId : data.media[i-1].id,
-      nextId : data.media[i+1].id,
-      media : data.media[i]
-    }
-  }
-  console.error("media",id,"non trouvé");
+// function getMedia(id){
+//   const max = data.media.length;
+//   for(let i=0; i<max; i++){
+//     if (data.media[i].id === id) return {
+//       prevId : data.media[i-1].id,
+//       nextId : data.media[i+1].id,
+//       media : data.media[i]
+//     }
+//   }
+//   console.error("media",id,"non trouvé");
 /**
      * get source of the media with the id photographer
      *
@@ -181,7 +181,6 @@ export {
   getPhotographers,
   getPhotographerData,
   getPhotographerMedia,
-  getMedia,
   getSource,
   getMediaTitle,
-}
+};
