@@ -1,5 +1,5 @@
 header {
-    width: 90%;
+    width: 100%;
     position: fixed;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -10,7 +10,7 @@ header {
 
 }
 
-.logo, nav, h1 {
+.logo, nav, .title-index {
     grid-row: 2;
     margin: 0 10px;
 }

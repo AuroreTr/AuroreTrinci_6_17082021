@@ -104,7 +104,7 @@ export class Photographer {
       image.className = 'portrait';
       image.setAttribute('src', `images/${this.portrait}`);
       image.setAttribute('alt', `Photo de ${this.name}`);
-      new SimpleComponent('h2', this.name, link);
+      new SimpleComponent('h2', this.name, link,'title-name');
       this.DOM.appendChild(link);
       new SimpleComponent('address', this.city+', '+this.country, this.DOM, 'localisation-index', 'localisation');
       new SimpleComponent('span', this.tagline, this.DOM, 'tagline-index', 'tagline');
@@ -122,7 +122,7 @@ export class Photographer {
     fullView(){
       const container = document.createElement("div");
       container.classList.add('photographer-info');
-      new SimpleComponent("h2", this.name,container, 'name-fullview');
+      new SimpleComponent("h1", this.name,container, 'name-fullview');
       new SimpleComponent('address', this.city+', '+this.country, container, 'localisation-index', 'localisation');
       new SimpleComponent("span", this.tagline,container, 'tagline-fullview');
       new NavTags(this.tags, null, container, 'tag-fullview');

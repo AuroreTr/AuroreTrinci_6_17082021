@@ -17,7 +17,12 @@ export class Sorting {
      */
     render() {
         const thisDom = this.DOM;
-        new SimpleComponent('label', 'Trier par',thisDom, 'sort-by');
+        const label = document.createElement('label');
+        thisDom.appendChild(label);
+        label.classList.add('sort-by');
+        label.innerText = 'Trier par';
+        label.setAttribute('for', 'select-sort');
+
         this.selection = document.createElement('select');
         thisDom.appendChild(this.selection);
         this.selection.setAttribute('name', 'sorting');
