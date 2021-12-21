@@ -136,18 +136,6 @@ function sortList(list, index) {
   return list.sort(method);
 }
 
-<<<<<<< HEAD
-// function getMedia(id){
-//   const max = data.media.length;
-//   for(let i=0; i<max; i++){
-//     if (data.media[i].id === id) return {
-//       prevId : data.media[i-1].id,
-//       nextId : data.media[i+1].id,
-//       media : data.media[i]
-//     }
-//   }
-//   console.error("media",id,"non trouvé");
-=======
 async function getPrice(photographerId) {
   let price = '';
   data.photographers.forEach(photographer => {
@@ -170,7 +158,6 @@ function getName(photographerId) {
 
 
 
->>>>>>> preprod
 /**
      * get source of the media with the id photographer
      *
