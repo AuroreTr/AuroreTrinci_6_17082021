@@ -1,4 +1,5 @@
-import { getPhotographerData, getPhotographerMedia } from "../dataManager.js";
+import { getPhotographerData, getPhotographerMedia,
+  getPrice } from "../dataManager.js";
 
 import { Photographer } from "../composants/photographer2.js";
 import { Sorting } from "../composants/sorting.js";
@@ -7,6 +8,7 @@ import { Header } from "../composants/header.js";
 import { Form } from "../composants/form.js";
 // import { SimpleComponent } from "../composants/simpleComponent.js";
 import { Lightbox } from "../composants/lightbox.js";
+import { SimpleComponent } from "../composants/simpleComponent.js";
 // import {ContentForm} from "../composants/contentForm.js";
 // import {Form} from "../composants/Form.js";
 export class PhotographerPage {
@@ -32,6 +34,8 @@ export class PhotographerPage {
 
   async render() {
     this.infoPhotographer = await getPhotographerData(this.photographerId);
+    this.price = await getPrice(this.photographerId);
+
     // console.log(this.infoPhotographer);
 
     new Header(this.domTarget);
@@ -42,18 +46,31 @@ export class PhotographerPage {
     this.allMedias.className = "all-medias";
     this.domTarget.appendChild(this.allMedias);
 
-    new Form(this.domTarget);
+    new Form(this.domTarget, this.photographerId);
 
     
     // new Lightbox(this.domTarget, this.photographerId, this.mediaList);
 
     this.updateMedia(this.sortList[0]);
 
-    const totalLikesContainer = document.createElement("p");
+    const totalLikesContainer = document.createElement("div");
     this.domTarget.appendChild(totalLikesContainer);
-    this.totalLikesNb = document.createElement("p");
-    totalLikesContainer.appendChild(this.totalLikesNb);
+    totalLikesContainer.classList.add('total-likes-container');
+    const likesResult = document.createElement('div');
+    totalLikesContainer.appendChild(likesResult);
+    likesResult.classList.add('likes-result');
+    this.totalLikesNb = document.createElement("span");
+    likesResult.appendChild(this.totalLikesNb);
+    this.totalLikesNb.classList.add('total-like');
     this.updateLike();
+    const heartLikesResult = document.createElement('i');
+    likesResult.appendChild(heartLikesResult);
+    heartLikesResult.classList.add('fas', 'fa-heart', 'likes-result-heart');
+    const pricePerDay = document.createElement('span');
+    totalLikesContainer.appendChild(pricePerDay);
+
+    pricePerDay.innerText = `${this.price}€/ jour`;
+
     // this.launchLightbox();
     this.manageContactFormModale();
 
@@ -98,8 +115,7 @@ export class PhotographerPage {
     // TODO : écraser le résultat à l'update d'un like au lieu d'ajouter un nouveau paragraphe
 
     let totalLikes = 0;
-    const nbOfLikes = document.querySelectorAll("p.sum-likes");
-
+    const nbOfLikes = document.querySelectorAll("span.sum-likes");
     nbOfLikes.forEach((likes) => {
       // console.log(likes.innerHTML);
       totalLikes += parseInt(likes.innerHTML);
@@ -144,10 +160,14 @@ export class PhotographerPage {
 
   startLightbox(id){
     console.log("ok", id, this.mediaList)
+<<<<<<< HEAD
     new Lightbox(this.domTarget, id, this.mediaList)
     new Lightbox(this.domTarget, id, this.mediaList, this.photographerId);
     document.getElementById('container-lightbox').style.display = 'block';
     new Lightbox(this.domTarget, id, this.mediaList, this.photographerId);
+=======
+    new Lightbox(this.domTarget, id, this.mediaList);
+>>>>>>> preprod
     document.getElementById('container-lightbox').style.display = 'block';
   }
 }

@@ -1,9 +1,10 @@
+import { getName } from "../dataManager.js";
 import { SimpleComponent } from "./simpleComponent.js";
 import { FormInput } from "./formInput.js";
 
 export class Form {
 
-    constructor(domTarget) {
+    constructor(domTarget, id) {
         // create a div with the 'content' class
         this.DOM = document.createElement("div");
         domTarget.appendChild(this.DOM);
@@ -16,6 +17,7 @@ export class Form {
         this.modalBody.className = "modal-body";
         this.modalBody.id = "modal-body";
         this.modalBody.innerHTML = '';
+        this.name = getName(id);
 
         this.render();
         // domTarget.appendChild(this.DOM);
@@ -39,7 +41,7 @@ export class Form {
         );
         new SimpleComponent(
             "h3",
-            "photographer name",
+            `${this.name}`,
             this.modalBody,
             "photographer-name",
             null,

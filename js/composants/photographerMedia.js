@@ -1,5 +1,4 @@
 import { SimpleComponent } from "./simpleComponent.js";
-import { getSource } from "../dataManager.js";
 
 export class PhotographerMedia {
 
@@ -86,11 +85,14 @@ export class PhotographerMedia {
     constructor(data, domTarget){
       this.DOM = document.createElement("article");
       domTarget.appendChild(this.DOM);
+      const mediaLink = document.createElement('a');
+      this.DOM.appendChild(mediaLink);
+      mediaLink.setAttribute('href', `${this.source}${this.image}`);
       for (const [key, value] of Object.entries(data)) {
         this[key] = value;
       }
       this.photographerId = data.photographerId;
-      this.source = getSource(this.photographerId);
+      this.source = 'images/';
       this.DOM.innerHTML = this.image ? this.templateImage() : this.templateVideo();
 
       this.containerMediaInfos = document.createElement("p");
@@ -110,7 +112,7 @@ export class PhotographerMedia {
     render(){
       // console.log(this)
       this.containerMediaInfos.innerHTML = `
-      <h4 class='media-title'>${this.title}</h4>
+      <h2 class='media-title'>${this.title}</h2>
       `;
       this.containerLikes = document.createElement('span');
       this.containerLikes.className = 'media-likes';
@@ -139,13 +141,10 @@ export class PhotographerMedia {
      */
     templateVideo(){
       return `
-      <a class='media-link' href='${this.source}${this.video}'>
-        <video controls class='media'>
+        <video controls class='media' alt='${this.description}'>
           <source src='${this.source}${this.video}' type='video/mp4'>
-          <p>${this.description}</p>
           <p>Votre navigateur ne prend pas en charge les videos</p>
-        </video>
-      </a>`;
+        </video>`;
     }
 
     addHeart(){
@@ -154,6 +153,7 @@ export class PhotographerMedia {
       coeur.className = "fa-heart ";
       coeur.id = "fa-heart";
       coeur.classList.add( this.liked? "fas" : "far");
+      coeur.setAttribute('aria-valuenow', `${this.likes}`);
       coeur.onclick = ()=>{
         this.liked = !this.liked;
         this.likes += this.liked ? 1 : -1;

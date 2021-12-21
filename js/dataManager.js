@@ -136,6 +136,7 @@ function sortList(list, index) {
   return list.sort(method);
 }
 
+<<<<<<< HEAD
 // function getMedia(id){
 //   const max = data.media.length;
 //   for(let i=0; i<max; i++){
@@ -146,33 +147,57 @@ function sortList(list, index) {
 //     }
 //   }
 //   console.error("media",id,"non trouvé");
+=======
+async function getPrice(photographerId) {
+  let price = '';
+  data.photographers.forEach(photographer => {
+    if (photographer.id === photographerId) {
+      price = photographer.price;
+    }
+  });
+  return price;
+}
+
+function getName(photographerId) {
+  let name = '';
+  data.photographers.forEach(photographer => {
+    if (photographer.id === photographerId) {
+      name = photographer.name;
+    }
+  });
+  return name;
+}
+
+
+
+>>>>>>> preprod
 /**
      * get source of the media with the id photographer
      *
     //  * @return  {String} 
      */
-function getSource(photographerId) {
-  // console.log(this.photographerId);
-  switch (photographerId) {
-    case 82:
-      return "../images/Tracy/";
-    case 195:
-      return "../images/Marcel/";
-    case 243:
-      return "../images/Mimi/";
-    case 527:
-      return "../images/Nabeel/";
-    case 925:
-      return "../images/Rhode/";
-    case 930:
-      return "../images/Ellie_Rose/";
+// function getSource(photographerId) {
+//   // console.log(this.photographerId);
+//   switch (photographerId) {
+//     case 82:
+//       return "../images/Tracy/";
+//     case 195:
+//       return "../images/Marcel/";
+//     case 243:
+//       return "../images/Mimi/";
+//     case 527:
+//       return "../images/Nabeel/";
+//     case 925:
+//       return "../images/Rhode/";
+//     case 930:
+//       return "../images/Ellie_Rose/";
 
-    default:
-      const err = "Impossible de trouver la source du media";
-      console.log(err);
-      break;
-  }
-}
+//     default:
+//       const err = "Impossible de trouver la source du media";
+//       console.log(err);
+//       break;
+//   }
+// }
 
 export {
   initDataManagerSource,
@@ -181,6 +206,7 @@ export {
   getPhotographers,
   getPhotographerData,
   getPhotographerMedia,
-  getSource,
   getMediaTitle,
+  getPrice,
+  getName
 };
