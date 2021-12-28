@@ -1,5 +1,6 @@
 import {SimpleComponent} from "./simpleComponent.js";
 import {NavTags} from "./navtags.js";
+import { clickOnLogo } from "../router.js";
 export class Header{
     // constructor(dataTags, title, domTarget){
     //     this.DOM = document.createElement("header");
@@ -9,12 +10,13 @@ export class Header{
     //     this.render();
     // }
 
-    constructor(domTarget, tags=null, tagAction=null, title=null, toScroll=null) {
+    constructor(domTarget, tags=null, tagAction=null, title=null, toScroll=null, activeTags=[]) {
       this.DOM = document.createElement('header');
       domTarget.appendChild(this.DOM);
       this.render();
+      clickOnLogo();
       if (toScroll !== null) this.toScroll();
-      if (tags !== null) new NavTags(tags, tagAction, this.DOM, 'tag-resumeview');
+      if (tags !== null) new NavTags(tags, tagAction, this.DOM, 'tag-resumeview', activeTags );
       if (title !== null) new SimpleComponent('h1', title, this.DOM, 'title-index');
       window.onscroll = this.toScroll.bind(this);
 
@@ -28,7 +30,7 @@ export class Header{
     render() {
       // this.extractTags();
       this.DOM.innerHTML = `
-      <img class='logo' src="images/logo.png" alt="logo FishEye">
+      <img id='logo' class='logo' src="images/logo.png" alt="Fisheye home page">
       <span id=go-up>Passer au contenu</span>
       `;
     }

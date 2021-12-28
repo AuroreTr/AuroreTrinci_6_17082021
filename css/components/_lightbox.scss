@@ -1,33 +1,31 @@
 #container-lightbox {
-  display: none;
+  // display: none;
   position: fixed;
+  width: 100vw;
+  height: 100vh;
   left: 0;
   top: 0;
-  bottom: 0;
-  right: 0;
-  background-color: rgba(256, 256, 256, 1);
+  background-color: rgba(256, 256, 256, .5);
   .lightbox {
     display: grid;
     grid-template-columns: 1fr 12fr 1fr;
+    grid-template-rows: 2fr 18fr 1fr;
     justify-content: center;
     align-items: center;
-    width: 95%;
-    height: 95%;
-    margin: auto;
-    // max-width: 1200px;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    // height: 95%;
+    margin: auto;
     background-color: #fff;
     #close-lightbox {
       grid-row: 1 / 2;
       grid-column: 3 / 4;
       color: $primary-color;
       font-size: 3em;
-      position: fixed;
-      top: 30px;
-      right: 50px;
       cursor: pointer;
     }
     #prev,
@@ -35,10 +33,6 @@
       grid-row: 2/3;
       font-size: 3em;
       color: $primary-color;
-      // position: fixed;
-      // top: 50%;
-      // left: 50%;
-      // transform: translate(-50%, -50%);
     }
     #prev {
       grid-column: 1 / 2;
@@ -49,9 +43,10 @@
     #close-lightbox,
     #prev,
     #next {
+      background-color: #fff;
+      border: none;
       cursor: pointer;
     }
-<<<<<<< HEAD
     .lightbox-content {
       width: 80%;
       height: 90%;
@@ -68,19 +63,21 @@
         transform: translate(-50%, -50%);
         border-radius: 5px;
       }
-=======
-    .media-lightbox {
-      grid-row: 2/3;
-      grid-column: 2 / 3;
-      max-width: 90%;
-      max-height: 90%;
-      margin: auto;
-    }
-    .title-media {
-      grid-row: 3;
-      grid-column: 2 / 3;
->>>>>>> preprod
+      .media-lightbox {
+        grid-row: 1/3;
+        grid-column: 2 / 3;
+        width: 100%;
+        height: 95%;
+        object-fit: cover;
+        margin: auto;
+        border-radius: 5px;
+      }
+      .title-media {
+        grid-row: 3;
+        grid-column: 2 / 3;
+        font-size: 24px;
+        color: $primary-color;
+      }
     }
   }
 }
-

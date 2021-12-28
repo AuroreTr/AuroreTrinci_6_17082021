@@ -68,7 +68,10 @@ export class PhotographerPage {
     heartLikesResult.classList.add('fas', 'fa-heart', 'likes-result-heart');
     const pricePerDay = document.createElement('span');
     totalLikesContainer.appendChild(pricePerDay);
+<<<<<<< HEAD
 
+=======
+>>>>>>> preprod
     pricePerDay.innerText = `${this.price}€/ jour`;
 
     // this.launchLightbox();

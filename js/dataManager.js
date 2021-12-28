@@ -95,8 +95,12 @@ function getPhotographerMedia(photographerId, filter) {
 
 function getMediaTitle(photographerId, filter, id) {
   const mediaList = getPhotographerMedia(photographerId, filter);
-  console.log(mediaList);
   if (data.media.id === id) return data.media.title;
+}
+
+function getMediaDescription(photographerId, filter, id) {
+  getPhotographerMedia(photographerId, filter);
+  if (data.media.id === id) console.log(data.media.id);  
 }
 
 /**
@@ -195,5 +199,10 @@ export {
   getPhotographerMedia,
   getMediaTitle,
   getPrice,
+<<<<<<< HEAD
   getName
+=======
+  getName,
+  getMediaDescription
+>>>>>>> preprod
 };

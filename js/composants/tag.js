@@ -5,7 +5,7 @@ export class Tag {
         this.DOM = document.createElement("button");
         this.DOM.className = "tags";
         if (btnClassName !== null) {
-            this.DOM.classList.add = btnClassName;
+            this.DOM.classList.add(btnClassName);
         } 
         if (callback !== null){
             this.DOM.onclick = this.click.bind(this);
@@ -23,7 +23,6 @@ export class Tag {
     // }
 
     click(){
-        console.log("active",this.name)
         this.DOM.classList.toggle("active");
         this.callback(this.name);
     }
