@@ -125,7 +125,7 @@ export class Photographer {
       new SimpleComponent("h1", this.name,container, 'name-fullview');
       new SimpleComponent('address', this.city+', '+this.country, container, 'localisation-index', 'localisation');
       new SimpleComponent("span", this.tagline,container, 'tagline-fullview');
-      new NavTags(this.tags, null, container, 'tag-fullview');
+      new NavTags(this.tags, this.redirectByTag, container, 'tag-fullview');
       this.DOM.appendChild(container);
       // new contactButton();
       new ContactButton(this.DOM);
@@ -134,5 +134,9 @@ export class Photographer {
       image.setAttribute('src', `images/${this.portrait}`);
       image.setAttribute('alt', `Photo de ${this.name}`);
       this.DOM.appendChild(image);
+    }
+
+    redirectByTag(tag){
+      window.changePage("tag",tag);
     }
   }

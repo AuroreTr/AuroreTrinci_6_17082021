@@ -101,7 +101,11 @@ export class PhotographerMedia {
       
       this.DOM.appendChild(this.containerMediaInfos);
       this.render();
+      window.test = this.test;
+    }
 
+    test(e){
+      console.log("...",e)
     }
   
     /**
@@ -130,7 +134,7 @@ export class PhotographerMedia {
      */
     templateImage(){
       return `
-      <img class='media' src='${this.source}${this.image}' tilte="${this.title}" onclick="page.startLightbox('${this.id}')" alt='${this.description}'>
+      <img tabindex="0" onkeypress="test()" class='media' src='${this.source}${this.image}' tilte="${this.title}" onclick="page.startLightbox('${this.id}')" alt='${this.description}'>
       `;
     }
 
@@ -141,7 +145,7 @@ export class PhotographerMedia {
      */
     templateVideo(){
       return `
-        <video controls class='media' alt='${this.description}'>
+        <video tabindex="0" class='media' alt='${this.description}' onclick="page.startLightbox('${this.id}')">
           <source src='${this.source}${this.video}' type='video/mp4'>
           <p>Votre navigateur ne prend pas en charge les videos</p>
         </video>`;

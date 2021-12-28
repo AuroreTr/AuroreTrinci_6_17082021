@@ -2,19 +2,30 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: flex-start;
+    margin-bottom: 100px;
     article {
+        width: 350px;
+        margin: 10px 30px;
         padding: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         .media {
             width: 350px;
             height: 300px;
             object-fit: cover;
             cursor: pointer;
+            border-radius: 5px;
         }
         .media-infos {
             width: 350px;
             padding-top: 5px;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
             .media-title, .media-likes {
                 font-size: 24px;
                 color: $primary-color;
@@ -23,17 +34,30 @@
                 font-weight: 400;
             }
             .media-likes {
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                align-items: flex-start;
                 font-weight: 500;
                 .sum-likes {
                     width: 35px;
+                    margin-right: 5px;
                 }
                 .fa-heart {
                     width: 30px;
                     margin-left: 3px;
-                    padding-right: 5px
+                    padding-right: 5px;
+                    padding-top: 3px;
+                    cursor: pointer;
                 }
             }    
         }
+    }
+}
+
+@media (max-width: $large-screen) {
+    .all-medias {
+        justify-content: center;
     }
 }
 

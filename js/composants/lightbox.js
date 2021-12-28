@@ -1,4 +1,4 @@
-import { getMediaTitle } from "../dataManager.js";
+import { getMediaTitle, getMediaDescription } from "../dataManager.js";
 export class Lightbox {
   constructor(domTarget, id, list) {
     this.mediaId = parseInt(id);
@@ -6,6 +6,7 @@ export class Lightbox {
     this.list = list;
     this.initPage(domTarget);
     this.title = getMediaTitle(id);
+    this.mediaDescription = getMediaDescription(id);
     // @ts-ignore
     window.page.next = this.next.bind(this);
     // @ts-ignore
@@ -15,7 +16,6 @@ export class Lightbox {
   }
 
   async initPage(domTarget) {
-
     this.DOM = document.createElement("div");
     domTarget.appendChild(this.DOM);
     this.DOM.id = 'container-lightbox';
@@ -23,22 +23,22 @@ export class Lightbox {
     this.DOM.appendChild(this.container);
     this.container.classList.add('lightbox');
     this.container.innerHTML = `
-                <button aria-label='Fermer' id="close-lightbox" onclick='page.close()'><i class="fas fa-times"></i></button>
+                <button aria-live='assertive' aria-label='Fermer' id="close-lightbox" onclick='page.close()'><i class="fas fa-times" aria-label="fermer"></i></button>
                 <button aria-label='Précédent' id="prev" onclick="page.prev()"><i class="fas fa-chevron-left"></i></button>
                 <button aria-label='Suivant' id="next" onclick="page.next()"><i class="fas fa-chevron-right"></i></button>
         `
     this.render()
+    console.log(this.mediaDescription);
   }
 
   render() {
-    console.log("..", this.image, this.video)
     if (this.image) {
       this.container.removeChild(this.image);
       this.container.removeChild(this.titleMedia);
     } 
     if (this.video) {
       this.container.removeChild(this.video);
-      this.container.removeChild(this.videoDescription);
+      //this.container.removeChild(this.videoDescription);
     } 
     this.media = this.getMedia();
     // si prevId undefined
@@ -51,10 +51,11 @@ export class Lightbox {
   }
 
   showImage(media) {
-
+    delete this.video;
     this.image = document.createElement("img");
     this.container.appendChild(this.image);
     this.image.src = this.source + media.image;
+    this.image.setAttribute('alt', `${this.mediaDescription}`);
     this.image.classList.add('media-lightbox');
     this.titleMedia = document.createElement('p');
     this.container.appendChild(this.titleMedia);
@@ -63,6 +64,7 @@ export class Lightbox {
   }
 
   showVideo(media) {
+    delete this.image;
     this.video = document.createElement('video');
     this.container.appendChild(this.video);
     this.video.classList.add('media-lightbox');
@@ -91,9 +93,16 @@ export class Lightbox {
     this.render();
   }
 
+
   close() {
     const containerLightbox = document.getElementById('container-lightbox');
     containerLightbox.style.display = 'none';
+    // @ts-ignore
+    delete window.page.next;
+    // @ts-ignore
+    delete window.page.prev;
+    // @ts-ignore
+    delete window.page.close;
   }
 
   getMedia() {
@@ -110,13 +119,14 @@ export class Lightbox {
     console.error("media", this.mediaId, "non trouvé");
   }
 
-  getMediaTitle(id) {
-    return this.list[id].title;
-  }
+  // getMediaTitle(id) {
+  //   return this.list[id].title;
+  // }
 
   getId(id) {
     if (!this.list[id]) return null;
     return this.list[id].id;
 
   }
+
 }

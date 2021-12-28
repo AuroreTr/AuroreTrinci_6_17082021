@@ -11,7 +11,13 @@ export class Index{
      */
     photographers;
   
-    constructor(domTarget){
+    /**
+     * [constructor description]
+     *
+     * @param   {HTMLElement}  domTarget  [domTarget description]
+     * @param   {String}  [tag]        [tag description]
+     */
+    constructor(domTarget, tag){
       this.DOM = domTarget;
       this.filters = [];
 
@@ -20,7 +26,7 @@ export class Index{
       */
      
       // this.DOM.innerHTML = "loading";
-      this.firstRender();
+      this.firstRender(tag);
     }
 
     // createNewPhotographer() {
@@ -30,13 +36,14 @@ export class Index{
 
     // }
 
-    async firstRender(){
+    async firstRender(tag){
       this.tags = await getPhotographersTags();
-      new Header(this.DOM, this.tags, this.tagClick.bind(this), 'Nos photographes');
+      new Header(this.DOM, this.tags, this.tagClick.bind(this), 'Nos photographes', null, tag? [tag] : []);
       this.main =  document.createElement('main');
       this.main.id = 'main-index';
       this.DOM.appendChild(this.main);
-      this.render();
+      if (tag) this.tagClick(tag);
+      else this.render();
     }
   
     render(){

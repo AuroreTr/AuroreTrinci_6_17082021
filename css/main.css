@@ -58,6 +58,7 @@ header {
 .logo {
   width: 12rem;
   padding-top: 10px;
+  cursor: pointer;
 }
 
 #go-up {
@@ -288,6 +289,17 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-transition: all .3s ease-in;
+  transition: all .3s ease-in;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.resume-view .link-portrait:hover {
+  -webkit-transition: all .3s ease-in;
+  transition: all .3s ease-in;
+  -webkit-transform: scale(1.15);
+          transform: scale(1.15);
 }
 
 .resume-view .link-portrait .portrait, .resume-view .link-portrait .title-name {
@@ -378,6 +390,7 @@ main {
 
 .full-view .tagline-fullview {
   font-size: 18px;
+  color: #525252;
 }
 
 .full-view .tag-fullview {
@@ -390,52 +403,6 @@ main {
   border-radius: 50%;
   -o-object-fit: cover;
      object-fit: cover;
-}
-
-.all-medias article {
-  width: 350px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.all-medias article .media {
-  border-radius: 5px;
-}
-
-.all-medias article .media-infos {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.all-medias article .media-infos .media-likes {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 .sort {
@@ -496,8 +463,8 @@ main {
 }
 
 .total-likes-container .likes-result .likes-result-heart {
-  margin-left: 5px;
-  font-size: smaller;
+  width: 25px;
+  margin-left: 7px;
 }
 
 @media (max-width: 992px) {
@@ -593,16 +560,32 @@ main {
           flex-direction: row;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  margin-bottom: 100px;
 }
 
 .all-medias article {
+  width: 350px;
+  margin: 10px 30px;
   padding: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .all-medias article .media {
@@ -611,11 +594,20 @@ main {
   -o-object-fit: cover;
      object-fit: cover;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .all-medias article .media-infos {
   width: 350px;
   padding-top: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .all-medias article .media-infos .media-title, .all-medias article .media-infos .media-likes {
@@ -628,17 +620,39 @@ main {
 }
 
 .all-medias article .media-infos .media-likes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   font-weight: 500;
 }
 
 .all-medias article .media-infos .media-likes .sum-likes {
   width: 35px;
+  margin-right: 5px;
 }
 
 .all-medias article .media-infos .media-likes .fa-heart {
   width: 30px;
   margin-left: 3px;
   padding-right: 5px;
+  padding-top: 3px;
+  cursor: pointer;
+}
+
+@media (max-width: 992px) {
+  .all-medias {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
 }
 
 #container-lightbox {

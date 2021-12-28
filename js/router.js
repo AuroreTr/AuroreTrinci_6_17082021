@@ -16,8 +16,7 @@ function extractUrl(){
     const request = window.location.search.slice(1);
     if (request.length === 0) return showPage("index");
     const [page, idString] = request.split("/");
-    const id = idString ? parseInt(idString) : undefined;
-    showPage(page, id);
+    showPage(page, idString);
 }
 
 /*
@@ -29,7 +28,7 @@ function extractUrl(){
  * [showPage description]
  *
  * @param   {String}  page  [page description]
- * @param   {Number}  [id]    [id description]
+ * @param   {Number | String}  [id]    [id description]
  *
  * @return  {void}        [return description]
  */
@@ -37,8 +36,12 @@ function showPage(page, id){
     DOM.innerText = "";
     switch (page) {
         case "index" : window.page = new Index(DOM); break;
-        case "photographer" : window.page = new PhotographerPage(DOM, id); break;
-        default : DOM.innerText =  "404"; break;
+        case "photographer" : window.page = new PhotographerPage(DOM, parseInt(id)); break;
+        case "tag" : window.page = new Index(DOM, id); break
+        default : 
+            window.page = null;
+            DOM.innerText =  "404";
+            break;
     }
 }
 
@@ -76,8 +79,15 @@ function buildUrl(page, id){
     return url;
 }
 
+function clickOnLogo() {
+    document.getElementById('logo').addEventListener('click', function() {
+        changePage('index');
+    });
+}
+
 export {
     extractUrl,
     setTarget,
-    changePage
+    changePage,
+    clickOnLogo
 }
