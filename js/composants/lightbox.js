@@ -36,7 +36,7 @@ export class Lightbox {
     } 
     if (this.video) {
       this.container.removeChild(this.video);
-      //this.container.removeChild(this.videoDescription);
+      this.container.removeChild(this.videoDescription);
     } 
     this.media = this.getMedia();
     // si prevId undefined
@@ -73,8 +73,9 @@ export class Lightbox {
     videoSource.src = this.source + media.video;
     videoSource.type = 'video/mp4';
     this.videoDescription = document.createElement('p');
-    this.video.appendChild(this.videoDescription);
-    this.videoDescription.innerText = '';
+    this.container.appendChild(this.videoDescription);
+    this.videoDescription.innerText = this.media.title;
+    this.videoDescription.classList.add('title-media');
     const messageError = document.createElement('p');
     this.video.appendChild(messageError);
     messageError.innerText = 'Votre navigateur ne prend pas en charge les vidéos';
