@@ -193,9 +193,9 @@ export class Form {
                             break;
                     }
                     if (erreurs === 0) {
-                        // inputList.forEach((element) => {
-                        //     console.log(element.value);
-                        // });
+                        inputList.forEach((element) => {
+                            console.log(element.value);
+                        });
                         
                         this.modalBody.innerHTML = `<p></p><p id='validation-message'>Je vous remercie pour votre message et vous répondrai dans les meilleurs délais.</p><input id='close2' class='close2' value='Fermer'>`;
 
