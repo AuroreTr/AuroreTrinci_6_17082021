@@ -98,11 +98,6 @@ function getMediaTitle(photographerId, filter, id) {
   if (data.media.id === id) return data.media.title;
 }
 
-function getMediaDescription(photographerId, filter, id) {
-  getPhotographerMedia(photographerId, filter);
-  if (data.media.id === id) console.log(data.media.id);  
-}
-
 /**
  * [sortList description]
  *
@@ -199,6 +194,5 @@ export {
   getPhotographerMedia,
   getMediaTitle,
   getPrice,
-  getName,
-  getMediaDescription
+  getName
 };

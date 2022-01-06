@@ -1,4 +1,4 @@
-import { getMediaTitle, getMediaDescription } from "../dataManager.js";
+import { getMediaTitle } from "../dataManager.js";
 export class Lightbox {
   constructor(domTarget, id, list) {
     this.mediaId = parseInt(id);
@@ -6,7 +6,6 @@ export class Lightbox {
     this.list = list;
     this.initPage(domTarget);
     this.title = getMediaTitle(id);
-    this.mediaDescription = getMediaDescription(id);
     // @ts-ignore
     window.page.next = this.next.bind(this);
     // @ts-ignore
@@ -23,12 +22,11 @@ export class Lightbox {
     this.DOM.appendChild(this.container);
     this.container.classList.add('lightbox');
     this.container.innerHTML = `
-                <button aria-live='assertive' aria-label='Fermer' id="close-lightbox" onclick='page.close()'><i class="fas fa-times" aria-label="fermer"></i></button>
+                <button role='button' aria-live='assertive' aria-label='Fermer' id="close-lightbox" onclick='page.close()'><i class="fas fa-times" aria-label="fermer"></i></button>
                 <button aria-label='Précédent' id="prev" onclick="page.prev()"><i class="fas fa-chevron-left"></i></button>
                 <button aria-label='Suivant' id="next" onclick="page.next()"><i class="fas fa-chevron-right"></i></button>
         `
     this.render()
-    console.log(this.mediaDescription);
   }
 
   render() {
@@ -55,12 +53,13 @@ export class Lightbox {
     this.image = document.createElement("img");
     this.container.appendChild(this.image);
     this.image.src = this.source + media.image;
-    this.image.setAttribute('alt', `${this.mediaDescription}`);
+    this.image.setAttribute('alt', `${this.media.description}`);
     this.image.classList.add('media-lightbox');
     this.titleMedia = document.createElement('p');
     this.container.appendChild(this.titleMedia);
     this.titleMedia.classList.add('title-media');
     this.titleMedia.innerText = this.media.title;
+    console.log(this.media.description);
   }
 
   showVideo(media) {
