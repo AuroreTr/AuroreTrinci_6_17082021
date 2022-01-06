@@ -101,12 +101,12 @@ export class PhotographerMedia {
       
       this.DOM.appendChild(this.containerMediaInfos);
       this.render();
-      window.test = this.test;
+      // window.test = this.test;
     }
 
-    test(e){
-      console.log("...",e)
-    }
+    // test(e){
+    //   console.log("...",e)
+    // }
   
     /**
      * update DOM content
@@ -134,7 +134,7 @@ export class PhotographerMedia {
      */
     templateImage(){
       return `
-      <img tabindex="0" onkeypress="test()" class='media' src='${this.source}${this.image}' tilte="${this.title}" onclick="page.startLightbox('${this.id}')" alt='${this.description}'>
+      <img tabindex="0" class='media' src='${this.source}${this.image}' tilte="${this.title}" onclick="page.startLightbox('${this.id}')" alt='${this.description}'>
       `;
     }
 

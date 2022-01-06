@@ -59,7 +59,6 @@ export class Lightbox {
     this.container.appendChild(this.titleMedia);
     this.titleMedia.classList.add('title-media');
     this.titleMedia.innerText = this.media.title;
-    console.log(this.media.description);
   }
 
   showVideo(media) {

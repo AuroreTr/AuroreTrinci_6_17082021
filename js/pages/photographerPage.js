@@ -141,7 +141,7 @@ export class PhotographerPage {
 
     // launch modal form
     document.getElementById("contact-btn").addEventListener("click", function () {
-      console.log('launch modal');
+      // console.log('launch modal');
         contactForm.style.display = "initial";
       });
 
@@ -158,7 +158,7 @@ export class PhotographerPage {
   }
 
   startLightbox(id){
-    console.log("ok", id, this.mediaList)
+    // console.log("ok", id, this.mediaList)
     new Lightbox(this.domTarget, id, this.mediaList);
     document.getElementById('container-lightbox').style.display = 'block';
   }
