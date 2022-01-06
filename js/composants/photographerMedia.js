@@ -134,7 +134,9 @@ export class PhotographerMedia {
      */
     templateImage(){
       return `
-      <img tabindex="0" class='media' src='${this.source}${this.image}' tilte="${this.title}" onclick="page.startLightbox('${this.id}')" alt='${this.description}'>
+      <img tabindex="0" class='media' src='${this.source}${this.image}' tilte="${this.title}" onclick="page.startLightbox('${this.
+// @ts-ignore
+      id}')" alt='${this.description}'>
       `;
     }
 
@@ -145,7 +147,9 @@ export class PhotographerMedia {
      */
     templateVideo(){
       return `
-        <video tabindex="0" class='media' alt='${this.description}' onclick="page.startLightbox('${this.id}')">
+        <video tabindex="0" class='media' alt='${this.description}' onclick="page.startLightbox('${this.
+// @ts-ignore
+        id}')">
           <source src='${this.source}${this.video}' type='video/mp4'>
           <p>Votre navigateur ne prend pas en charge les videos</p>
         </video>`;
