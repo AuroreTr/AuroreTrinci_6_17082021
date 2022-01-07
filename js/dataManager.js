@@ -194,14 +194,5 @@ export {
   getPhotographerMedia,
   getMediaTitle,
   getPrice,
-<<<<<<< HEAD
-<<<<<<< HEAD
   getName
-=======
-  getName,
-  getMediaDescription
->>>>>>> preprod
-=======
-  getName
->>>>>>> preprod
 };
