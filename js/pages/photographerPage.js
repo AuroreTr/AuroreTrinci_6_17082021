@@ -3,7 +3,7 @@ import { getPhotographerData, getPhotographerMedia,
 
 import { Photographer } from "../composants/photographer2.js";
 import { Sorting } from "../composants/sorting.js";
-import { PhotographerMedia } from "../composants/photographerMedia.js";
+import { FactoryMedia } from "../composants/factoryMedia.js";
 import { Header } from "../composants/header.js";
 import { Form } from "../composants/form.js";
 // import { SimpleComponent } from "../composants/simpleComponent.js";
@@ -100,7 +100,7 @@ export class PhotographerPage {
 
     this.mediaList = getPhotographerMedia(this.photographerId, filter);
     this.mediaList.forEach((element) => {
-      new PhotographerMedia(element, this.allMedias);
+      new FactoryMedia(element, this.allMedias);
     });
   }
 
