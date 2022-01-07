@@ -3,7 +3,7 @@ import { getPhotographerData, getPhotographerMedia,
 
 import { Photographer } from "../composants/photographer2.js";
 import { Sorting } from "../composants/sorting.js";
-import { PhotographerMedia } from "../composants/photographerMedia.js";
+import { FactoryMedia } from "../composants/factoryMedia.js";
 import { Header } from "../composants/header.js";
 import { Form } from "../composants/form.js";
 // import { SimpleComponent } from "../composants/simpleComponent.js";
@@ -104,7 +104,7 @@ export class PhotographerPage {
 
     this.mediaList = getPhotographerMedia(this.photographerId, filter);
     this.mediaList.forEach((element) => {
-      new PhotographerMedia(element, this.allMedias);
+      new FactoryMedia(element, this.allMedias);
     });
   }
 
@@ -145,7 +145,7 @@ export class PhotographerPage {
 
     // launch modal form
     document.getElementById("contact-btn").addEventListener("click", function () {
-      console.log('launch modal');
+      // console.log('launch modal');
         contactForm.style.display = "initial";
       });
 
@@ -162,7 +162,7 @@ export class PhotographerPage {
   }
 
   startLightbox(id){
-    console.log("ok", id, this.mediaList)
+    // console.log("ok", id, this.mediaList)
     new Lightbox(this.domTarget, id, this.mediaList);
     document.getElementById('container-lightbox').style.display = 'block';
   }

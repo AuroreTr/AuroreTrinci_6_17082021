@@ -145,11 +145,7 @@ export class PhotographerMedia {
      */
     templateVideo(){
       return `
-<<<<<<< HEAD
-        <video controls class='media' alt='${this.description}'>
-=======
         <video tabindex="0" class='media' alt='${this.description}' onclick="page.startLightbox('${this.id}')">
->>>>>>> preprod
           <source src='${this.source}${this.video}' type='video/mp4'>
           <p>Votre navigateur ne prend pas en charge les videos</p>
         </video>`;
